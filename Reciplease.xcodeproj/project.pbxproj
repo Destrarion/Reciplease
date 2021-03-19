@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5FB776382604BC1B00CDA1FB /* RecipleaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB776372604BC1B00CDA1FB /* RecipleaseTabBarController.swift */; };
+		5FB7763D2604C28D00CDA1FB /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7763C2604C28D00CDA1FB /* RecipeTableViewCell.swift */; };
 		5FFD76CF25F2139B00248FF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFD76CE25F2139B00248FF7 /* AppDelegate.swift */; };
 		5FFD76D125F2139B00248FF7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFD76D025F2139B00248FF7 /* SceneDelegate.swift */; };
 		5FFD76D325F2139B00248FF7 /* FridgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFD76D225F2139B00248FF7 /* FridgeViewController.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5FB776372604BC1B00CDA1FB /* RecipleaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseTabBarController.swift; sourceTree = "<group>"; };
+		5FB7763C2604C28D00CDA1FB /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		5FFD76CB25F2139B00248FF7 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FFD76CE25F2139B00248FF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FFD76D025F2139B00248FF7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 				5FFD76D225F2139B00248FF7 /* FridgeViewController.swift */,
 				5FFD771525F2171D00248FF7 /* RecipeListViewController.swift */,
 				5FFD771A25F2177800248FF7 /* RecipeDetailsViewController.swift */,
+				5FB776372604BC1B00CDA1FB /* RecipleaseTabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -97,6 +102,7 @@
 			children = (
 				5FFD76D425F2139B00248FF7 /* Main.storyboard */,
 				5FFD76DC25F2139C00248FF7 /* LaunchScreen.storyboard */,
+				5FB7763C2604C28D00CDA1FB /* RecipeTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -295,8 +301,10 @@
 				5FFD771B25F2177800248FF7 /* RecipeDetailsViewController.swift in Sources */,
 				5FFD76D925F2139B00248FF7 /* Reciplease.xcdatamodeld in Sources */,
 				5FFD76D325F2139B00248FF7 /* FridgeViewController.swift in Sources */,
+				5FB776382604BC1B00CDA1FB /* RecipleaseTabBarController.swift in Sources */,
 				5FFD76CF25F2139B00248FF7 /* AppDelegate.swift in Sources */,
 				5FFD76D125F2139B00248FF7 /* SceneDelegate.swift in Sources */,
+				5FB7763D2604C28D00CDA1FB /* RecipeTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
