@@ -10,24 +10,22 @@ import XCTest
 
 class RecipleaseTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testUrlMultiple() {
+        let urlProvider = RecipeUrlProvider()
+        let url = urlProvider.createRecipeRequestUrl(ingredients: ["chicken","lemon"])
+        XCTAssertEqual(url!.absoluteString, "https://api.edamam.com/search?q=chicken,lemon&app_id=24cc3abb&app_key=67d0ce73e19bd16320ed7534c84eb38f")
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testUrlEmpty() {
+        let urlProvider = RecipeUrlProvider()
+        let url = urlProvider.createRecipeRequestUrl(ingredients: [])
+        XCTAssertEqual(url!.absoluteString, "https://api.edamam.com/search?q=&app_id=24cc3abb&app_key=67d0ce73e19bd16320ed7534c84eb38f")
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testUrlSingle() {
+        let urlProvider = RecipeUrlProvider()
+        let url = urlProvider.createRecipeRequestUrl(ingredients: ["chicken"])
+        XCTAssertEqual(url!.absoluteString, "https://api.edamam.com/search?q=chicken&app_id=24cc3abb&app_key=67d0ce73e19bd16320ed7534c84eb38f")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+    
 }

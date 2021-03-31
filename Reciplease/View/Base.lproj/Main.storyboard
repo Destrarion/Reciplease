@@ -19,36 +19,51 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_Ardoise" translatesAutoresizingMaskIntoConstraints="NO" id="af6-7M-lAf">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FUW-D8-6Gh" userLabel="Add in Reagent">
-                                <rect key="frame" x="0.0" y="88" width="414" height="195"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FUW-D8-6Gh" userLabel="Add in Reagent">
+                                <rect key="frame" x="8" y="116" width="414" height="127"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyQ-vU-sE6">
-                                        <rect key="frame" x="302" y="124" width="89" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Add Reagent">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zt6-Tt-aWr">
-                                        <rect key="frame" x="8" y="120" width="280" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Reagent in the fridge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekp-67-g1V">
-                                        <rect key="frame" x="110" y="41" width="194" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="hkM-oh-z88">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="127"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Reagent in the fridge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekp-67-g1V">
+                                                <rect key="frame" x="40.5" y="0.0" width="333" height="39"/>
+                                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hid-cc-3sQ" userLabel="Add Ingredient in List">
+                                                <rect key="frame" x="6.5" y="89" width="401" height="38"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zt6-Tt-aWr">
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="280" id="H22-VG-X3H"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyQ-vU-sE6">
+                                                        <rect key="frame" x="290" y="0.0" width="111" height="38"/>
+                                                        <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="20"/>
+                                                        <state key="normal" title="Add Reagent">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hkM-oh-z88" secondAttribute="trailing" id="Jek-IY-zbo"/>
+                                    <constraint firstItem="hkM-oh-z88" firstAttribute="top" secondItem="FUW-D8-6Gh" secondAttribute="top" id="haj-Od-G35"/>
+                                    <constraint firstAttribute="bottom" secondItem="hkM-oh-z88" secondAttribute="bottom" id="t7v-xZ-gMW"/>
+                                    <constraint firstItem="hkM-oh-z88" firstAttribute="leading" secondItem="FUW-D8-6Gh" secondAttribute="leading" id="xUT-ZZ-uQC"/>
+                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYb-wy-5ON">
-                                <rect key="frame" x="118" y="430" width="178" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYb-wy-5ON">
+                                <rect key="frame" x="8" y="741" width="398" height="64"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="40"/>
                                 <state key="normal" title="Search for recipe list ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -56,10 +71,34 @@
                                     <action selector="didTapGoToRecipeListButton:" destination="OCq-BO-rf7" eventType="touchUpInside" id="q8P-0m-kiQ"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1fg-jy-xjd">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1fg-jy-xjd">
+                                <rect key="frame" x="8" y="263" width="398" height="463"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="cQt-M0-Rva">
+                                        <rect key="frame" x="0.0" y="28" width="398" height="64.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cQt-M0-Rva" id="hq7-XS-sRu">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="64.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBb-oP-BIl">
+                                                    <rect key="frame" x="40" y="16" width="58" height="32.5"/>
+                                                    <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="25"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="oBb-oP-BIl" firstAttribute="top" secondItem="hq7-XS-sRu" secondAttribute="topMargin" constant="5" id="1Kz-gU-hf2"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="oBb-oP-BIl" secondAttribute="bottom" constant="5" id="4pE-J1-0XG"/>
+                                                <constraint firstItem="oBb-oP-BIl" firstAttribute="leading" secondItem="hq7-XS-sRu" secondAttribute="leadingMargin" constant="20" id="phj-aT-r5p"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ySV-DF-nY1"/>
@@ -67,12 +106,23 @@
                         <constraints>
                             <constraint firstItem="ySV-DF-nY1" firstAttribute="trailing" secondItem="af6-7M-lAf" secondAttribute="trailing" id="00g-uc-s0P"/>
                             <constraint firstAttribute="bottom" secondItem="af6-7M-lAf" secondAttribute="bottom" id="9FB-zO-Lvz"/>
+                            <constraint firstItem="FUW-D8-6Gh" firstAttribute="top" secondItem="ySV-DF-nY1" secondAttribute="top" constant="28" id="ARk-3C-Tsv"/>
+                            <constraint firstItem="1fg-jy-xjd" firstAttribute="top" secondItem="FUW-D8-6Gh" secondAttribute="bottom" constant="20" id="D9p-0R-uNh"/>
+                            <constraint firstItem="1fg-jy-xjd" firstAttribute="leading" secondItem="ySV-DF-nY1" secondAttribute="leading" constant="8" id="DEz-to-HlF"/>
                             <constraint firstItem="af6-7M-lAf" firstAttribute="top" secondItem="ySV-DF-nY1" secondAttribute="top" id="Gr0-9R-xbl"/>
+                            <constraint firstItem="FUW-D8-6Gh" firstAttribute="leading" secondItem="ySV-DF-nY1" secondAttribute="leading" constant="8" id="H4B-kx-idB"/>
                             <constraint firstItem="af6-7M-lAf" firstAttribute="leading" secondItem="ySV-DF-nY1" secondAttribute="leading" id="TAE-xg-hsW"/>
+                            <constraint firstItem="ySV-DF-nY1" firstAttribute="trailing" secondItem="ZYb-wy-5ON" secondAttribute="trailing" constant="8" id="ZBQ-O5-2Vr"/>
+                            <constraint firstItem="ZYb-wy-5ON" firstAttribute="top" secondItem="1fg-jy-xjd" secondAttribute="bottom" constant="15" id="dm0-Td-EPw"/>
+                            <constraint firstItem="FUW-D8-6Gh" firstAttribute="trailing" secondItem="ySV-DF-nY1" secondAttribute="trailing" constant="8" id="jtT-je-lfo"/>
+                            <constraint firstItem="ZYb-wy-5ON" firstAttribute="leading" secondItem="ySV-DF-nY1" secondAttribute="leading" constant="8" id="rKn-OI-yKc"/>
+                            <constraint firstItem="ySV-DF-nY1" firstAttribute="trailing" secondItem="1fg-jy-xjd" secondAttribute="trailing" constant="8" id="sDO-UJ-BoU"/>
+                            <constraint firstItem="ySV-DF-nY1" firstAttribute="bottom" secondItem="ZYb-wy-5ON" secondAttribute="bottom" constant="8" id="xPB-V4-lHK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Fridge" id="D8x-kv-lpS"/>
                     <connections>
+                        <outlet property="tableViewIngredient" destination="1fg-jy-xjd" id="SFn-oI-vCJ"/>
                         <segue destination="GEt-IO-blH" kind="show" identifier="GoToRecipeListSegue" id="bHL-GO-iuC"/>
                     </connections>
                 </viewController>
