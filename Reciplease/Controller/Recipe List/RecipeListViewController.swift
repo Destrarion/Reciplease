@@ -12,22 +12,22 @@ class RecipeListViewController: UITableViewController {
         tableView.backgroundView = ardoiseImageView
     }
     
-    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!
     
     @IBAction func didTapGoToRecipeListButton(_ sender: UIButton) {
         guard let name = nameTextField.text else { return }
         performSegue(withIdentifier: "GoToRecipeDetailsSegue", sender: name)
     }
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var nameLabel: UILabel!
-    
-    
     
     @IBAction func didTapSaveNameButton(_ sender: UIButton) {
         nameLabel.text = nameTextField.text
     }
     
+    var recipeService = RecipeService()
+    var ingredients: [String] = []
+     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if

@@ -13,6 +13,8 @@ class RecipeService {
     private let networkManager: NetworkManagerProtocol
     private let recipeUrlProvider: RecipeUrlProviderProtocol
     
+    var name = ""
+    var ingredients: [String] = []
     
     func getRecipes(ingredients: [String], callback: @escaping (Result<[Recipe], NetworkManagerError>) -> Void) {
         guard let requestURL = recipeUrlProvider.createRecipeRequestUrl(ingredients: ingredients) else {
@@ -31,5 +33,7 @@ class RecipeService {
             }
         }
     }
+    
+    
     
 }
