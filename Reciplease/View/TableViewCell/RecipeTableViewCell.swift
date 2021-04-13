@@ -23,7 +23,7 @@ class RecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var recipeTitleLabel: UILabel!
     
     
-    func configure(recipeTest: RecipeTest) {
-        recipeTitleLabel.text = recipeTest.title
+    func configure(recipe: Recipe) {
+        recipeTitleLabel.text = recipe.label
     }
 }

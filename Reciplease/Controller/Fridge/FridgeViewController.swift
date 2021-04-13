@@ -3,6 +3,8 @@ import UIKit
 class FridgeViewController: UIViewController {
     
     private let fridgeService = FridgeService()
+    private let recipeService = RecipeService.shared
+    private let alertManager = AlertManager()
     
     
     override func viewDidLoad() {
@@ -26,19 +28,25 @@ class FridgeViewController: UIViewController {
     
     
     @IBAction func didTapGoToRecipeListButton(_ sender: UIButton) {
-        performSegue(withIdentifier: "GoToRecipeListSegue", sender: nil)
+        
+        recipeService.getRecipes(ingredients: fridgeService.ingredients) { [weak self] (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    self?.alertManager.presentAlert(on: self, error: error)
+                case .success:
+                    self?.performSegue(withIdentifier: "GoToRecipeListSegue", sender: nil)
+                }
+            }
+        }
+        
+        
+        
     }
     
     @IBAction func addIngredientInFridge(_ sender: UIButton) {
         guard let ingredient = addIngredientTextField.text else { return }
         fridgeService.add(ingredient: ingredient)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "GoToRecipeListSegue" {
-            let destinationVC = segue.destination as! RecipeListViewController
-            destinationVC.ingredients = fridgeService.ingredients
-        }
     }
 }
 

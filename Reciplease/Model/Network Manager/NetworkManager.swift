@@ -20,32 +20,37 @@ class NetworkManager: NetworkManagerProtocol {
     func fetch<T: Decodable>(url: URL, callback: @escaping (Result<T, NetworkManagerError>) -> Void) {
         
         task = session.dataTask(with: url) { (data, response, error) in
-           
-                
-                guard error == nil else {
-                    callback(.failure(.unknownError))
-                    return
-                }
-                
-                guard
-                    let response = response as? HTTPURLResponse,
-                    response.statusCode == 200
-                else {
-                    callback(.failure(.responseCodeIsInvalid))
-                    return
-                }
-                
-                guard let data = data else {
-                    callback(.failure(.noData))
-                    return
-                }
-                
-                guard let decodedData = try? JSONDecoder().decode(T.self, from: data) else {
-                    callback(.failure(.failedToDecodeJsonToCodableStruct))
-                    return
-                }
-                
+            
+            
+            guard error == nil else {
+                callback(.failure(.unknownError))
+                return
+            }
+            
+            guard
+                let response = response as? HTTPURLResponse,
+                response.statusCode == 200
+            else {
+                callback(.failure(.responseCodeIsInvalid))
+                return
+            }
+            
+            guard let data = data else {
+                callback(.failure(.noData))
+                return
+            }
+            
+            do {
+                let decodedData = try JSONDecoder().decode(T.self, from: data)
                 callback(.success(decodedData))
+            } catch {
+                print(error.localizedDescription)
+                callback(.failure(.failedToDecodeJsonToCodableStruct))
+                return
+            }
+            
+            
+           
             
         }
         task?.resume()

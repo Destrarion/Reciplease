@@ -2,6 +2,8 @@ import Foundation
 
 class RecipeService {
     
+    static let shared = RecipeService()
+    
     init(
         networkManager: NetworkManagerProtocol = NetworkManager(),
         recipeUrlProvider: RecipeUrlProviderProtocol = RecipeUrlProvider()
@@ -13,10 +15,10 @@ class RecipeService {
     private let networkManager: NetworkManagerProtocol
     private let recipeUrlProvider: RecipeUrlProviderProtocol
     
-    var name = ""
     var ingredients: [String] = []
+    var recipes: [Recipe] = []
     
-    func getRecipes(ingredients: [String], callback: @escaping (Result<[Recipe], NetworkManagerError>) -> Void) {
+    func getRecipes(ingredients: [String], callback: @escaping (Result<Void, NetworkManagerError>) -> Void) {
         guard let requestURL = recipeUrlProvider.createRecipeRequestUrl(ingredients: ingredients) else {
             callback(.failure(.couldNotCreateURL))
             return
@@ -28,11 +30,13 @@ class RecipeService {
                 return
             case .success(let response):
                 let recipes = response.hits.map { $0.recipe }
-                callback(.success(recipes))
+                self.recipes = recipes
+                callback(.success(()))
                 return
             }
         }
     }
+    
     
     
     

@@ -12,6 +12,11 @@ class RecipeListViewController: UITableViewController {
         tableView.backgroundView = ardoiseImageView
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -25,8 +30,9 @@ class RecipeListViewController: UITableViewController {
         nameLabel.text = nameTextField.text
     }
     
-    var recipeService = RecipeService()
-    var ingredients: [String] = []
+    var alertManager = AlertManager()
+    private var recipeService = RecipeService.shared
+    
      
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -39,9 +45,10 @@ class RecipeListViewController: UITableViewController {
         
     }
     
+   
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipesTest.count
+        return recipeService.recipes.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,31 +56,18 @@ class RecipeListViewController: UITableViewController {
             return UITableViewCell()
         }
         
-        let recipe = recipesTest[indexPath.row]
+        let recipe = recipeService.recipes[indexPath.row]
         
-        cell.configure(recipeTest: recipe)
+        cell.configure(recipe: recipe)
         
         return cell
     }
     
     
-    
-    var recipesTest: [RecipeTest] = [
-        .init(title: "Pizza"),
-        .init(title: "Pasta"),
-        .init(title: "Rizotto")
-    ]
-    
 
     
     
 }
 
 
-class RecipeTest {
-    init(title: String) {
-        self.title = title
-    }
-    
-    let title: String
-}
+

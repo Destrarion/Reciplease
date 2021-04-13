@@ -1,10 +1,16 @@
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let recipeResponse = try? newJSONDecoder().decode(RecipeResponse.self, from: jsonData)
 
 import Foundation
 
-
-
 // MARK: - RecipeResponse
 struct RecipeResponse: Codable {
+    let q: String
+    let from, to: Int
+    let more: Bool
+    let count: Int
     let hits: [Hit]
 }
 
@@ -89,4 +95,3 @@ struct Total: Codable {
     let quantity: Double
     let unit: Unit
 }
-
