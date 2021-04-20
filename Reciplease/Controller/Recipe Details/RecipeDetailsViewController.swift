@@ -4,8 +4,10 @@ class RecipeDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = name
+        
+        print(recipe?.label)
     }
-    @IBOutlet weak var nameLabel: UILabel!
-    var name : String?
+    
+    
+    var recipe: Recipe?
 }

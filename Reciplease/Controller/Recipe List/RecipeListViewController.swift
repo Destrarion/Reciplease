@@ -3,13 +3,10 @@
 import UIKit
 
 class RecipeListViewController: UITableViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let ardoiseImage = UIImage(named: "Background_Ardoise")
-        let ardoiseImageView = UIImageView(image: ardoiseImage)
-        ardoiseImageView.contentMode = .scaleAspectFill
-        tableView.backgroundView = ardoiseImageView
+        backgroundImageSetting(background: "Background_Ardoise")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -17,18 +14,17 @@ class RecipeListViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var nameLabel: UILabel!
     
-    @IBAction func didTapGoToRecipeListButton(_ sender: UIButton) {
-        guard let name = nameTextField.text else { return }
-        performSegue(withIdentifier: "GoToRecipeDetailsSegue", sender: name)
+    
+    
+    
+    func backgroundImageSetting(background image: String){
+        let ardoiseImage = UIImage(named: image)
+        let ardoiseImageView = UIImageView(image: ardoiseImage)
+        ardoiseImageView.contentMode = .scaleAspectFill
+        tableView.backgroundView = ardoiseImageView
     }
-    
-    
-    @IBAction func didTapSaveNameButton(_ sender: UIButton) {
-        nameLabel.text = nameTextField.text
-    }
+
     
     var alertManager = AlertManager()
     private var recipeService = RecipeService.shared
@@ -37,10 +33,10 @@ class RecipeListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if
-            let destination = segue.destination as? RecipeDetailsViewController ,
-            let name = sender as? String
+            let destination = segue.destination as? RecipeDetailsViewController,
+            let recipe = sender as? Recipe
         {
-            destination.name = name
+            destination.recipe = recipe
         }
         
     }
@@ -66,8 +62,10 @@ class RecipeListViewController: UITableViewController {
     
 
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let recipe = recipeService.recipes[indexPath.row]
+        performSegue(withIdentifier: "GoToRecipeDetailsSegue", sender: recipe)
+    }
+    
     
 }
-
-
-

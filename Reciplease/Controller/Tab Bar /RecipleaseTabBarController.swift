@@ -20,9 +20,9 @@ class RecipleaseTabBarController: UITabBarController {
     }
     
     private func configureItems() {
-        guard let itens = tabBar.items else { return }
+        guard let items = tabBar.items else { return }
         
-        for iten in itens {
+        for item in items {
             
             let font = UIFont.systemFont(ofSize: 20)
             
@@ -30,7 +30,7 @@ class RecipleaseTabBarController: UITabBarController {
                 .font : font
             ]
             
-            iten.setTitleTextAttributes(textAttributes, for: .normal)
+            item.setTitleTextAttributes(textAttributes, for: .normal)
             
             tabBar.unselectedItemTintColor = .lightGray
             
@@ -40,7 +40,7 @@ class RecipleaseTabBarController: UITabBarController {
                 .foregroundColor: UIColor.white
             ]
             
-            iten.setTitleTextAttributes(selectedTextAttributes, for: .selected)
+            item.setTitleTextAttributes(selectedTextAttributes, for: .selected)
         }
     }
     

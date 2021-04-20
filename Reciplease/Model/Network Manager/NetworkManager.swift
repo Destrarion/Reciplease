@@ -44,7 +44,7 @@ class NetworkManager: NetworkManagerProtocol {
                 let decodedData = try JSONDecoder().decode(T.self, from: data)
                 callback(.success(decodedData))
             } catch {
-                print(error.localizedDescription)
+                print(error)
                 callback(.failure(.failedToDecodeJsonToCodableStruct))
                 return
             }

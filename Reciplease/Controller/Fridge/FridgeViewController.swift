@@ -28,18 +28,19 @@ class FridgeViewController: UIViewController {
     
     
     @IBAction func didTapGoToRecipeListButton(_ sender: UIButton) {
-        
-        recipeService.getRecipes(ingredients: fridgeService.ingredients) { [weak self] (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .failure(let error):
-                    self?.alertManager.presentAlert(on: self, error: error)
-                case .success:
-                    self?.performSegue(withIdentifier: "GoToRecipeListSegue", sender: nil)
+
+        if fridgeService.ingredients != [] {
+            recipeService.getRecipes(ingredients: fridgeService.ingredients) { [weak self] (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .failure(let error):
+                        self?.alertManager.presentAlert(on: self, error: error)
+                    case .success:
+                        self?.performSegue(withIdentifier: "GoToRecipeListSegue", sender: nil)
+                    }
                 }
             }
         }
-        
         
         
     }
@@ -47,6 +48,7 @@ class FridgeViewController: UIViewController {
     @IBAction func addIngredientInFridge(_ sender: UIButton) {
         guard let ingredient = addIngredientTextField.text else { return }
         fridgeService.add(ingredient: ingredient)
+        addIngredientTextField.text = ""
     }
 }
 

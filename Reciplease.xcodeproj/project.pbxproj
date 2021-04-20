@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F2A4B3A26280E6D00570284 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2A4B3926280E6D00570284 /* URLManager.swift */; };
 		5F3539EC261F95BD0073AFF2 /* RecipeListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3539EB261F95BD0073AFF2 /* RecipeListService.swift */; };
 		5F3539F7261FAB9D0073AFF2 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3539F6261FAB9D0073AFF2 /* AlertManager.swift */; };
 		5F6DBAA0260DC2EA0075570F /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFD76E825F2139C00248FF7 /* RecipleaseTests.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F2A4B3926280E6D00570284 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		5F3539EB261F95BD0073AFF2 /* RecipeListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListService.swift; sourceTree = "<group>"; };
 		5F3539F6261FAB9D0073AFF2 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		5FAA5E27260D5CF300B42811 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				5FAA5E2F260D5D4E00B42811 /* NetworkManagerError.swift */,
 				5FAA5E41260D5E8000B42811 /* RecipeResponse.swift */,
 				5FAA5E4C260DBEC000B42811 /* RecipeUrlProvider.swift */,
+				5F2A4B3926280E6D00570284 /* URLManager.swift */,
 			);
 			path = "Network Manager";
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				5FFD771B25F2177800248FF7 /* RecipeDetailsViewController.swift in Sources */,
 				5F3539EC261F95BD0073AFF2 /* RecipeListService.swift in Sources */,
 				5FFD76D325F2139B00248FF7 /* FridgeViewController.swift in Sources */,
+				5F2A4B3A26280E6D00570284 /* URLManager.swift in Sources */,
 				5FAA5E42260D5E8000B42811 /* RecipeResponse.swift in Sources */,
 				5FB776382604BC1B00CDA1FB /* RecipleaseTabBarController.swift in Sources */,
 				5FFD76CF25F2139B00248FF7 /* AppDelegate.swift in Sources */,
