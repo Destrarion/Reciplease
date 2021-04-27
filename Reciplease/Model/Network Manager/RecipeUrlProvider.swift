@@ -26,9 +26,16 @@ class RecipeUrlProvider: RecipeUrlProviderProtocol {
         urlComponents.queryItems = [
             .init(name: "q", value: ingredientQuery),
             .init(name: "app_id", value: "24cc3abb"),
-            .init(name: "app_key", value: "67d0ce73e19bd16320ed7534c84eb38f" )
+            .init(name: "app_key", value: "67d0ce73e19bd16320ed7534c84eb38f"),
+            .init(name: "from", value: "0"),
+            .init(name: "to", value: "50")
         ]
         
         return urlComponents.url
+    }
+    
+    //https://www.edamam.com/web-img/d37/d376c145f2a59befa7738a2c35caab31.jpg
+    func createRecipeImageRequestUrl(recipe: Recipe){
+        
     }
 }

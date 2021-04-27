@@ -37,11 +37,16 @@ class RecipeService {
         }
     }
     
-   // func getWeatherImageData(recipe: Recipe, callback: @escaping (Result<Data, NetworkManagerError>) -> Void) {
-   //     let requestURL = recipe.image
-   //     }
-   //     networkManager.fetchData(url: requestURL, callback: callback)
-   // }
+    func getImageRecipe(recipe: Recipe , callback: @escaping (Result<Data,NetworkManagerError>)-> Void){
+        guard let urlImage = URL(string: recipe.image)
+        else {
+            callback(.failure(.couldNotCreateURL))
+            return
+        }
+        networkManager.fetchData(url: urlImage, callback: callback)
+    }
+    
+  
     
     
     

@@ -2,6 +2,7 @@
 // Curently URLSession, planned to change to AlamoFire later
 
 import Foundation
+import Alamofire
 
 protocol NetworkManagerProtocol {
     func fetch<T: Decodable>(url: URL, callback: @escaping (Result<T, NetworkManagerError>) -> Void)
