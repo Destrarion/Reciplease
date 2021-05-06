@@ -64,7 +64,9 @@ class RecipeListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let recipe = recipeService.recipes[indexPath.row]
-        performSegue(withIdentifier: "GoToRecipeDetailsSegue", sender: recipe)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "GoToRecipeDetailsSegue", sender: recipe)
+        }
     }
     
     

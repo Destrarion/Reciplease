@@ -11,6 +11,18 @@ protocol FridgeServiceDelegate: class {
     func ingredientsDidChange()
 }
 
+enum FridgeServiceError: Error {
+    case failedToAddIngredientIsEmpty
+    case failedToAddIngredientIsAlreadyAdded
+    
+    var errorDescription: String {
+        switch self {
+        case .failedToAddIngredientIsEmpty: return "Ingredient is empty"
+        case .failedToAddIngredientIsAlreadyAdded: return "Ingredient is already added"
+        }
+    }
+}
+
 class FridgeService {
     
     weak var delegate: FridgeServiceDelegate?
@@ -21,8 +33,18 @@ class FridgeService {
         }
     }
     
-    func add(ingredient: String) {
-        ingredients.append(ingredient)
+    func add(ingredient: String) -> Result<Void, FridgeServiceError>  {
+        
+        guard !ingredient.isEmpty else {
+            return .failure(.failedToAddIngredientIsEmpty)
+        }
+        
+        guard !ingredients.contains(ingredient.lowercased()) else {
+            return .failure(.failedToAddIngredientIsAlreadyAdded)
+        }
+        
+        ingredients.append(ingredient.lowercased())
+        return .success(())
     }
     
     

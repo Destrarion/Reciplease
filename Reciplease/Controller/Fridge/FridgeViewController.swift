@@ -47,9 +47,16 @@ class FridgeViewController: UIViewController {
     
     @IBAction func addIngredientInFridge(_ sender: UIButton) {
         guard let ingredient = addIngredientTextField.text else { return }
-        fridgeService.add(ingredient: ingredient)
-        addIngredientTextField.text = ""
+        
+        switch fridgeService.add(ingredient: ingredient) {
+        case .failure(let error):
+            alertManager.presentAlert(on: self, error: error)
+        case .success:
+            addIngredientTextField.text = ""
+        }
+        
     }
+    
 }
 
 
@@ -57,11 +64,11 @@ class FridgeViewController: UIViewController {
 extension FridgeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = ingredientsTableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as? IngredientTableViewCell else {
+        guard let cell = ingredientsTableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as? FridgeIngredientTableViewCell else {
             return UITableViewCell()
         }
         
-        cell.ingredientTitleLabel.text = fridgeService.ingredients[indexPath.row]
+        cell.ingredientTitleLabel.text = "- \(fridgeService.ingredients[indexPath.row])"
         
         return cell
     }

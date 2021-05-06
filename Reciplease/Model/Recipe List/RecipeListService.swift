@@ -5,7 +5,7 @@ class RecipeService {
     static let shared = RecipeService()
     
     init(
-        networkManager: NetworkManagerProtocol = NetworkManager(),
+        networkManager: NetworkManagerProtocol = AlamofireNetworkManager(),
         recipeUrlProvider: RecipeUrlProviderProtocol = RecipeUrlProvider()
     ) {
         self.networkManager = networkManager

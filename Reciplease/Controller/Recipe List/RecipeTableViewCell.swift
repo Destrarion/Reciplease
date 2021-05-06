@@ -40,7 +40,12 @@ class RecipeTableViewCell: UITableViewCell {
     private var gradientLayer: CAGradientLayer?
 
     
+    private var lastLoadedRecipe: Recipe?
+    
     func configure(recipe: Recipe) {
+        recipeImageView.image = UIImage()
+        lastLoadedRecipe = recipe
+        
         recipeTitleLabel.text = recipe.label
         totalTimeLabel.text = "\(recipe.totalTime)"
         getImage(recipe: recipe)
@@ -64,8 +69,10 @@ class RecipeTableViewCell: UITableViewCell {
         gradientLayer.colors = [UIColor(cgColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)), UIColor.black.cgColor]
         shadowView.layer.addSublayer(gradientLayer)
     }
+    
+    
 
-    func getImage(recipe: Recipe){
+    func getImage(recipe: Recipe) {
         
         recipeService.getImageRecipe(
             recipe: recipe
@@ -76,6 +83,7 @@ class RecipeTableViewCell: UITableViewCell {
                 case .failure(let error):
                     print(error)
                 case .success(let response):
+                    guard recipe.label == self?.lastLoadedRecipe?.label else { return }
                     let loadedImage = UIImage(data: response)
                     self?.recipeImageView.image = loadedImage
         
