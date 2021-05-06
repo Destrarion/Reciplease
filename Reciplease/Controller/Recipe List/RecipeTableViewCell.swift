@@ -33,6 +33,7 @@ class RecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var totalTimeLabel: UILabel!
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var ingredientRecipeLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var recipeService = RecipeService.shared
     private var alertManager = AlertManager()
@@ -73,7 +74,7 @@ class RecipeTableViewCell: UITableViewCell {
     
 
     func getImage(recipe: Recipe) {
-        
+        activityIndicator.startAnimating()
         recipeService.getImageRecipe(
             recipe: recipe
          ) { [weak self] (result) in
@@ -82,11 +83,12 @@ class RecipeTableViewCell: UITableViewCell {
                 switch result {
                 case .failure(let error):
                     print(error)
+                    self?.activityIndicator.stopAnimating()
                 case .success(let response):
                     guard recipe.label == self?.lastLoadedRecipe?.label else { return }
                     let loadedImage = UIImage(data: response)
                     self?.recipeImageView.image = loadedImage
-        
+                    self?.activityIndicator.stopAnimating()
         
                 }
             }

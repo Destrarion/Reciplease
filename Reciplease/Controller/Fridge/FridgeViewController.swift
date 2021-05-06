@@ -20,6 +20,7 @@ class FridgeViewController: UIViewController {
     
     @IBOutlet weak var ingredientsTableView: UITableView!
     @IBOutlet weak var addIngredientTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     @IBAction func didTapOnClearButton() {
@@ -28,15 +29,17 @@ class FridgeViewController: UIViewController {
     
     
     @IBAction func didTapGoToRecipeListButton(_ sender: UIButton) {
-
+        activityIndicator.startAnimating()
         if fridgeService.ingredients != [] {
             recipeService.getRecipes(ingredients: fridgeService.ingredients) { [weak self] (result) in
                 DispatchQueue.main.async {
                     switch result {
                     case .failure(let error):
                         self?.alertManager.presentAlert(on: self, error: error)
+                        self?.activityIndicator.stopAnimating()
                     case .success:
                         self?.performSegue(withIdentifier: "GoToRecipeListSegue", sender: nil)
+                        self?.activityIndicator.stopAnimating()
                     }
                 }
             }
