@@ -11,6 +11,12 @@ class FridgeViewController: UIViewController {
         super.viewDidLoad()
         setupIngredientTableView()
         fridgeService.delegate = self
+        
+        searchButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        searchButton.titleLabel?.minimumScaleFactor = 0.5
+        searchButton.layer.cornerRadius = 15
+        clearButton.layer.cornerRadius = 15
+        addButton.layer.cornerRadius = 15
     }
     
     private func setupIngredientTableView() {
@@ -21,6 +27,9 @@ class FridgeViewController: UIViewController {
     @IBOutlet weak var ingredientsTableView: UITableView!
     @IBOutlet weak var addIngredientTextField: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
     
     
     @IBAction func didTapOnClearButton() {

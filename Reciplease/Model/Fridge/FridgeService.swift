@@ -7,18 +7,20 @@
 
 import Foundation
 
-protocol FridgeServiceDelegate: class {
+protocol FridgeServiceDelegate: AnyObject {
     func ingredientsDidChange()
 }
 
 enum FridgeServiceError: Error {
     case failedToAddIngredientIsEmpty
     case failedToAddIngredientIsAlreadyAdded
+    case failedToAddIngredientContainsSpecialCharacter
     
     var errorDescription: String {
         switch self {
         case .failedToAddIngredientIsEmpty: return "Ingredient is empty"
         case .failedToAddIngredientIsAlreadyAdded: return "Ingredient is already added"
+        case .failedToAddIngredientContainsSpecialCharacter: return "Ingredient contains special character"
         }
     }
 }
@@ -35,15 +37,26 @@ class FridgeService {
     
     func add(ingredient: String) -> Result<Void, FridgeServiceError>  {
         
-        guard !ingredient.isEmpty else {
+        let translatedIngredient = translateUnicodeEmoji(ingredient: ingredient) ?? ingredient
+        let trimmedIngredient = translatedIngredient.trimmingCharacters(in: .whitespaces).lowercased()
+        
+        
+        guard !trimmedIngredient.isEmpty else {
             return .failure(.failedToAddIngredientIsEmpty)
         }
         
-        guard !ingredients.contains(ingredient.lowercased()) else {
+        guard !ingredients.contains(trimmedIngredient) else {
             return .failure(.failedToAddIngredientIsAlreadyAdded)
         }
         
-        ingredients.append(ingredient.lowercased())
+        guard isIngredientValid(ingredient: ingredient) else {
+            return .failure(.failedToAddIngredientContainsSpecialCharacter)
+        }
+        
+        
+        
+        
+        ingredients.append(trimmedIngredient)
         return .success(())
     }
     
@@ -54,5 +67,22 @@ class FridgeService {
     
     func removeIngredient(at index: Int) {
         ingredients.remove(at: index)
+    }
+    
+    private func isIngredientValid(ingredient: String) -> Bool {
+        let pattern = "/^[A-Za-z]+$@@ƒ¢¡ø[[][]Ò/{}"
+        
+        
+        let result = ingredient.range(of: pattern, options: .regularExpression)
+        
+        return result != nil
+    }
+    
+    private func translateUnicodeEmoji(ingredient:String) -> String? {
+        let translation = ingredient.data(using: String.Encoding.nonLossyASCII)
+        let textTranslated = String(data: translation!, encoding: String.Encoding.utf8)
+        
+        
+        return textTranslated
     }
 }

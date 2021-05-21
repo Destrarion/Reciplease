@@ -1,4 +1,5 @@
 import UIKit
+import SafariServices
 
 class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
     
@@ -18,7 +19,17 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var titleRecipeLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageRecipe: UIImageView!
+    @IBOutlet weak var gradientView: UIView!
     
+    @IBAction func didTapOnOpenInstructionButton() {
+        guard let recipeUrlString = recipe?.url,
+              let recipeUrl = URL(string: recipeUrlString)
+        else { return }
+        
+        let safariViewController = SFSafariViewController(url: recipeUrl)
+        present(safariViewController, animated: true, completion: nil)
+        
+    }
     
     var recipe: Recipe?
     private var recipeService = RecipeService.shared
@@ -45,6 +56,14 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
             }
         }
     }
+    
+    func addGradient() {
+        gradientView.layer.sublayers?.removeAll()
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: gradientView.frame.minX, y: 50, width: gradientView.frame.width, height: gradientView.frame.height)
+        gradientLayer.colors = [UIColor(cgColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)), UIColor.black.cgColor]
+        gradientView.layer.addSublayer(gradientLayer)
+    }
 }
 
 
@@ -56,7 +75,7 @@ extension RecipeDetailsViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.ingredientDetailsTitleLabel.text = "- \(recipe?.ingredientLines[indexPath.row] ?? "")"
+        cell.ingredientDetailsTitleLabel.text = "- \(recipe?.ingredientLines[indexPath.row])"
         
         return cell
     }
