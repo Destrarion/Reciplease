@@ -9,39 +9,6 @@ import XCTest
 @testable import Reciplease
 
 class FridgeServiceTests: XCTestCase {
-//    func testGivenFridgeWithMultipleIngredients_whenClearIngredients_thenIngredientsEmpty() {
-//        let fridgeService = FridgeService()
-//
-//        _ = fridgeService.add(ingredient: "Tomato")
-//        _ = fridgeService.add(ingredient: "Lemon")
-//
-//
-//
-//        fridgeService.removeIngredients()
-//
-//
-//
-//        XCTAssertTrue(fridgeService.ingredients.isEmpty)
-//
-//
-//    }
-//
-//
-//    func testGivenFridgeWithTomatoIngredients_whenRemoveTomato_thenTomatoIsRemoved() {
-//        let fridgeService = FridgeService()
-//
-//        _ = fridgeService.add(ingredient: "Tomato")
-//        _ = fridgeService.add(ingredient: "Lemon")
-//
-//
-//        fridgeService.removeIngredient(at: 0)
-//
-//
-//
-//        XCTAssertFalse(fridgeService.ingredients.contains("Tomato"))
-//
-//
-//    }
     
     
     func test_givenNewEmptyIngredient_whenAddIngredient_thenGetIngredientEmptyFailure() {
@@ -142,7 +109,6 @@ class FridgeServiceTests: XCTestCase {
         let fridgeService = FridgeService()
         
         _ = fridgeService.add(ingredient: "   tomato")
-        
         switch fridgeService.add(ingredient: "tomato") {
         case .failure(let error): XCTAssertEqual(error, .failedToAddIngredientIsAlreadyAdded)
         case .success: XCTFail()
@@ -178,4 +144,56 @@ class FridgeServiceTests: XCTestCase {
     }
     
     
+    // MARK: Spaces and words
+    func test_givenIngredients_whenRemoveAllIngredient_thenIngredientEmpty(){
+        let fridgeservice = FridgeService()
+        
+        fridgeservice.ingredients = ["potatoes", "lettuce", "strawberry"]
+        
+        fridgeservice.removeIngredients()
+        
+        XCTAssertEqual(fridgeservice.ingredients, [])
+        
+    }
+    
+    func test_givenEmptyIngredient_whenAddingIngredient_thenErrorFailedToAddIngredientIsEmpty() {
+        let fridgeservice = FridgeService()
+        
+        switch fridgeservice.add(ingredient: "") {
+        case .failure(let error): XCTAssertEqual(error, .failedToAddIngredientIsEmpty)
+        case .success: (XCTFail())
+        }
+        
+    }
+    
+    func test_givenThreeIngredients_whenRemove2ndIngredient_thenRemove2ndIngredient() {
+        let fridgeservice = FridgeService()
+        fridgeservice.ingredients = ["beef","lemon","potatoes"]
+        
+        fridgeservice.removeIngredient(at: 1)
+        
+        XCTAssertEqual("potatoes", fridgeservice.ingredients[1])
+    }
+    
+    //MARK: - Enumeration Error
+    func test_givenFridgeServiceErrorFailToAddIngredientIsEmpty_whenErrorOccure_thenErrorDescriptionStringIngredientIsEmpty() {
+        
+        let fridgeError = FridgeServiceError.failedToAddIngredientIsEmpty
+        
+        XCTAssertEqual(fridgeError.errorDescription, "Ingredient is empty")
+    }
+    
+    func test_givenFridgeServiceErrorfailedToAddIngredientIsAlreadyAdded_whenErrorOccure_thenErrorDescriptionStringIngredientIsAlreadyAdded() {
+        
+        let fridgeError = FridgeServiceError.failedToAddIngredientIsAlreadyAdded
+        
+        XCTAssertEqual(fridgeError.errorDescription, "Ingredient is already added")
+    }
+    
+    func test_givenFridgeServiceErrorfailedToAddIngredientContainsSpecialCharacter_whenErrorOccure_thenErrorDescriptionStringIngredientContainsSpecialCharacter() {
+        let fridgeError = FridgeServiceError.failedToAddIngredientContainsSpecialCharacter
+        
+        XCTAssertEqual(fridgeError.errorDescription, "Ingredient contains special character")
+        
+    }
 }

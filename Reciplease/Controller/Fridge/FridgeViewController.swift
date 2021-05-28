@@ -11,13 +11,18 @@ class FridgeViewController: UIViewController {
         super.viewDidLoad()
         setupIngredientTableView()
         fridgeService.delegate = self
+        addIngredientTextField.delegate = self
         
         searchButton.titleLabel?.adjustsFontSizeToFitWidth = true
         searchButton.titleLabel?.minimumScaleFactor = 0.5
-        searchButton.layer.cornerRadius = 15
+        searchButton.layer.cornerRadius = 25
         clearButton.layer.cornerRadius = 15
         addButton.layer.cornerRadius = 15
+        addButton.clipsToBounds = true
+        
+        
     }
+    
     
     private func setupIngredientTableView() {
         ingredientsTableView.delegate = self
@@ -31,6 +36,9 @@ class FridgeViewController: UIViewController {
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        addIngredientTextField.resignFirstResponder()
+    }
     
     @IBAction func didTapOnClearButton() {
         fridgeService.removeIngredients()
@@ -58,6 +66,10 @@ class FridgeViewController: UIViewController {
     }
     
     @IBAction func addIngredientInFridge(_ sender: UIButton) {
+        addIngredient()
+    }
+    
+    private func addIngredient() {
         guard let ingredient = addIngredientTextField.text else { return }
         
         switch fridgeService.add(ingredient: ingredient) {
@@ -66,7 +78,6 @@ class FridgeViewController: UIViewController {
         case .success:
             addIngredientTextField.text = ""
         }
-        
     }
     
 }
@@ -80,7 +91,7 @@ extension FridgeViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.ingredientTitleLabel.text = "- \(fridgeService.ingredients[indexPath.row])"
+        cell.ingredientTitleLabel.text = "- \(fridgeService.ingredients[indexPath.row].capitalized)"
         
         return cell
     }
@@ -97,7 +108,7 @@ extension FridgeViewController: UITableViewDelegate {
             self?.fridgeService.removeIngredient(at: indexPath.row)
         }
         
-        deleteContextItem.backgroundColor = .gray
+        deleteContextItem.backgroundColor = .red
         
         
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteContextItem])
@@ -110,5 +121,12 @@ extension FridgeViewController: FridgeServiceDelegate {
         DispatchQueue.main.async { [weak self] in
             self?.ingredientsTableView.reloadData()
         }
+    }
+}
+
+extension FridgeViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        addIngredient()
+        return true
     }
 }

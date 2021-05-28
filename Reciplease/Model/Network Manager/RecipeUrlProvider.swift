@@ -33,9 +33,4 @@ class RecipeUrlProvider: RecipeUrlProviderProtocol {
         
         return urlComponents.url
     }
-    
-    //https://www.edamam.com/web-img/d37/d376c145f2a59befa7738a2c35caab31.jpg
-    func createRecipeImageRequestUrl(recipe: Recipe){
-        
-    }
 }

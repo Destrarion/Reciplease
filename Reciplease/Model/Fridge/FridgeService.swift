@@ -37,9 +37,10 @@ class FridgeService {
     
     func add(ingredient: String) -> Result<Void, FridgeServiceError>  {
         
-        let translatedIngredient = translateUnicodeEmoji(ingredient: ingredient) ?? ingredient
-        let trimmedIngredient = translatedIngredient.trimmingCharacters(in: .whitespaces).lowercased()
+        //let translatedIngredient = translateUnicodeEmoji(ingredient: ingredient) ?? ingredient
+        let trimmedIngredient = ingredient.trimmingCharacters(in: .whitespaces).lowercased()
         
+        print(trimmedIngredient)
         
         guard !trimmedIngredient.isEmpty else {
             return .failure(.failedToAddIngredientIsEmpty)
@@ -49,11 +50,9 @@ class FridgeService {
             return .failure(.failedToAddIngredientIsAlreadyAdded)
         }
         
-        guard isIngredientValid(ingredient: ingredient) else {
+        guard isIngredientValid(ingredient: trimmedIngredient) else {
             return .failure(.failedToAddIngredientContainsSpecialCharacter)
         }
-        
-        
         
         
         ingredients.append(trimmedIngredient)
@@ -70,7 +69,7 @@ class FridgeService {
     }
     
     private func isIngredientValid(ingredient: String) -> Bool {
-        let pattern = "/^[A-Za-z]+$@@ƒ¢¡ø[[][]Ò/{}"
+        let pattern = "^[A-Za-z]*$"
         
         
         let result = ingredient.range(of: pattern, options: .regularExpression)
@@ -78,11 +77,4 @@ class FridgeService {
         return result != nil
     }
     
-    private func translateUnicodeEmoji(ingredient:String) -> String? {
-        let translation = ingredient.data(using: String.Encoding.nonLossyASCII)
-        let textTranslated = String(data: translation!, encoding: String.Encoding.utf8)
-        
-        
-        return textTranslated
-    }
 }

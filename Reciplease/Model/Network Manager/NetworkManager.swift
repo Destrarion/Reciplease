@@ -1,5 +1,4 @@
 
-// Curently URLSession, planned to change to AlamoFire later
 
 import Foundation
 import Alamofire
