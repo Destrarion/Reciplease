@@ -31,7 +31,7 @@ struct Recipe: Codable {
     let dietLabels, healthLabels, cautions, ingredientLines: [String]
     let ingredients: [Ingredient]
     let calories, totalWeight: Double
-    let totalTime: Int
+    let totalTime: Double
     let cuisineType, mealType, dishType: [String]?
     let totalNutrients, totalDaily: [String: Total]
 }

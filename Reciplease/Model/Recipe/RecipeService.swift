@@ -27,11 +27,13 @@ class RecipeService {
             switch result {
             case .failure(let error):
                 callback(.failure(error))
+                print(requestURL)
                 return
             case .success(let response):
                 let recipes = response.hits.map { $0.recipe }
                 self.recipes = recipes
                 callback(.success(()))
+                print(requestURL)
                 return
             }
         }

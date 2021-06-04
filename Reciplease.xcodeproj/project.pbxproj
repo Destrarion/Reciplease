@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5F233ABD264DE69D00D8EE2B /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F233ABB264DE69D00D8EE2B /* Reciplease.xcdatamodeld */; };
+		5F2929DB2660C80C007BD69B /* RealBackendDecodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2929DA2660C80C007BD69B /* RealBackendDecodeTests.swift */; };
 		5F3539EC261F95BD0073AFF2 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3539EB261F95BD0073AFF2 /* RecipeService.swift */; };
 		5F3539F7261FAB9D0073AFF2 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3539F6261FAB9D0073AFF2 /* AlertManager.swift */; };
 		5F6DBAA0260DC2EA0075570F /* UrlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFD76E825F2139C00248FF7 /* UrlTests.swift */; };
@@ -56,6 +57,7 @@
 /* Begin PBXFileReference section */
 		299F90440E316C94BE2CD3DE /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F233ABC264DE69D00D8EE2B /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
+		5F2929DA2660C80C007BD69B /* RealBackendDecodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealBackendDecodeTests.swift; sourceTree = "<group>"; };
 		5F3539EB261F95BD0073AFF2 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
 		5F3539F6261FAB9D0073AFF2 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		5F72BF3326609467006608E5 /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		5F72BF39266097CD006608E5 /* NetworkTest */ = {
 			isa = PBXGroup;
 			children = (
+				5F2929DA2660C80C007BD69B /* RealBackendDecodeTests.swift */,
 				5FFD76E825F2139C00248FF7 /* UrlTests.swift */,
 				5F72BF3326609467006608E5 /* NetworkTest.swift */,
 				5F72BF3726609743006608E5 /* FakeResponseData.swift */,
@@ -526,6 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FAB64222616FB590018D991 /* FridgeServiceTests.swift in Sources */,
+				5F2929DB2660C80C007BD69B /* RealBackendDecodeTests.swift in Sources */,
 				5F72BF3826609743006608E5 /* FakeResponseData.swift in Sources */,
 				5F72BF3426609467006608E5 /* NetworkTest.swift in Sources */,
 				5F6DBAA0260DC2EA0075570F /* UrlTests.swift in Sources */,

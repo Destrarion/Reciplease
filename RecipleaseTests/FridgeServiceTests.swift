@@ -175,6 +175,16 @@ class FridgeServiceTests: XCTestCase {
         XCTAssertEqual("potatoes", fridgeservice.ingredients[1])
     }
     
+    func test_givenIngredientWithWhiteSpace_WhenAddingIngredient_thenIngredientAdded() {
+        let fridgeservice = FridgeService()
+        
+        switch fridgeservice.add(ingredient: "Smashed Potatoes"){
+        case .failure(let error) :XCTFail(error.errorDescription)
+        case .success(): XCTAssertEqual(fridgeservice.ingredients.first, "smashed potatoes")
+        }
+        
+    }
+    
     //MARK: - Enumeration Error
     func test_givenFridgeServiceErrorFailToAddIngredientIsEmpty_whenErrorOccure_thenErrorDescriptionStringIngredientIsEmpty() {
         
@@ -196,4 +206,7 @@ class FridgeServiceTests: XCTestCase {
         XCTAssertEqual(fridgeError.errorDescription, "Ingredient contains special character")
         
     }
+    
+    
+
 }
