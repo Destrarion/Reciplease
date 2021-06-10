@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8GE-Qd-M7Y">
-    <device id="retina3_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,41 +13,41 @@
             <objects>
                 <viewController id="OCq-BO-rf7" customClass="FridgeViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DFX-pF-ql8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_Ardoise" translatesAutoresizingMaskIntoConstraints="NO" id="af6-7M-lAf">
-                                <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                                <rect key="frame" x="0.0" y="88" width="428" height="838"/>
                                 <gestureRecognizers/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FUW-D8-6Gh" userLabel="Add in Fridge">
-                                <rect key="frame" x="8" y="72" width="304" height="106.5"/>
+                                <rect key="frame" x="8" y="116" width="412" height="106.66666666666669"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="hkM-oh-z88">
-                                        <rect key="frame" x="0.0" y="0.0" width="304" height="91.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="412" height="91.666666666666671"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Ingredient:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekp-67-g1V">
-                                                <rect key="frame" x="0.0" y="0.0" width="304" height="32.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="412" height="32.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="25"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hid-cc-3sQ" userLabel="Add Ingredient in List">
-                                                <rect key="frame" x="0.0" y="57.5" width="304" height="34"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hid-cc-3sQ" userLabel="Add Ingredient in List">
+                                                <rect key="frame" x="0.0" y="57.666666666666657" width="412" height="34"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zt6-Tt-aWr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="224" height="34"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="332" height="34"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="yes" spellCheckingType="yes" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="done" smartInsertDeleteType="yes" smartQuotesType="yes"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyQ-vU-sE6">
-                                                        <rect key="frame" x="234" y="0.0" width="70" height="34"/>
+                                                        <rect key="frame" x="342" y="0.0" width="70" height="34"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="34" id="XMP-RG-ItR"/>
-                                                            <constraint firstAttribute="width" constant="70" id="has-N1-4SI"/>
+                                                            <constraint firstAttribute="width" secondItem="tyQ-vU-sE6" secondAttribute="height" multiplier="35:17" id="tbY-PL-ncP"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
                                                         <size key="titleShadowOffset" width="2" height="2"/>
@@ -77,7 +77,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYb-wy-5ON">
-                                <rect key="frame" x="8" y="368" width="304" height="55"/>
+                                <rect key="frame" x="8" y="780" width="412" height="55"/>
                                 <color key="backgroundColor" red="0.050980392159999999" green="0.69411764710000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="wd3-Qq-F5I"/>
@@ -92,19 +92,26 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1fg-jy-xjd">
-                                <rect key="frame" x="8" y="223.5" width="304" height="129.5"/>
+                                <rect key="frame" x="8" y="267.66666666666674" width="412" height="497.33333333333326"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ingredientCell" id="cQt-M0-Rva" customClass="FridgeIngredientTableViewCell" customModule="Reciplease" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="304" height="64.5"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="412" height="64.666664123535156"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cQt-M0-Rva" id="hq7-XS-sRu">
-                                            <rect key="frame" x="0.0" y="0.0" width="304" height="64.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="412" height="64.666664123535156"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBb-oP-BIl">
-                                                    <rect key="frame" x="21" y="16" width="267" height="32.5"/>
+                                                    <rect key="frame" x="25" y="15.999999999999996" width="367" height="32.666666666666657"/>
                                                     <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="25"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBl-H9-vd7">
+                                                    <rect key="frame" x="381.66666666666669" y="17.666666666666671" width="10.333333333333314" height="29.333333333333329"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="27"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -113,7 +120,10 @@
                                             <constraints>
                                                 <constraint firstItem="oBb-oP-BIl" firstAttribute="top" secondItem="hq7-XS-sRu" secondAttribute="topMargin" constant="5" id="1Kz-gU-hf2"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="oBb-oP-BIl" secondAttribute="bottom" constant="5" id="4pE-J1-0XG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ZBl-H9-vd7" secondAttribute="trailing" id="Bnv-f2-C8h"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="oBb-oP-BIl" secondAttribute="trailing" id="FYl-XF-clw"/>
+                                                <constraint firstItem="ZBl-H9-vd7" firstAttribute="centerY" secondItem="hq7-XS-sRu" secondAttribute="centerY" id="KqR-b5-PMQ"/>
+                                                <constraint firstItem="ZBl-H9-vd7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hq7-XS-sRu" secondAttribute="leading" constant="20" symbolic="YES" id="UPv-mP-9sc"/>
                                                 <constraint firstItem="oBb-oP-BIl" firstAttribute="leading" secondItem="hq7-XS-sRu" secondAttribute="leadingMargin" constant="5" id="phj-aT-r5p"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -125,7 +135,7 @@
                                 </prototypes>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="cr2-yg-Oi3" userLabel="Ingredient / Clear button">
-                                <rect key="frame" x="15" y="178.5" width="297" height="40"/>
+                                <rect key="frame" x="15" y="222.66666666666666" width="405" height="39.999999999999972"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wsk-LS-7as">
                                         <rect key="frame" x="0.0" y="0.0" width="107" height="40"/>
@@ -134,10 +144,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cuf-1L-F8u">
-                                        <rect key="frame" x="227" y="0.0" width="70" height="40"/>
+                                        <rect key="frame" x="357" y="0.0" width="48" height="40"/>
                                         <color key="backgroundColor" red="0.92133218050003052" green="0.032813412273772484" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="70" id="Lj8-xj-Naw"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="Lj8-xj-Naw"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="21"/>
                                         <state key="normal" title="Clear">
@@ -153,7 +163,7 @@
                                 </constraints>
                             </stackView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="jCA-bN-Rr4">
-                                <rect key="frame" x="110" y="190" width="100" height="100"/>
+                                <rect key="frame" x="164" y="413" width="100" height="100"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="dxg-e3-7st"/>
@@ -216,14 +226,14 @@
             <objects>
                 <viewController id="iGN-Ra-BrR" customClass="RecipeDetailsViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MuQ-Wm-Srf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_Ardoise" translatesAutoresizingMaskIntoConstraints="NO" id="fDg-ED-ugo">
-                                <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                                <rect key="frame" x="0.0" y="88" width="428" height="838"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKD-p9-WTH">
-                                <rect key="frame" x="25" y="356" width="270" height="50"/>
+                                <rect key="frame" x="25" y="768" width="378" height="50"/>
                                 <color key="backgroundColor" red="0.027636602600000001" green="0.48274260889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3Tz-O9-lVc"/>
@@ -237,19 +247,19 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hHo-yc-weD">
-                                <rect key="frame" x="15" y="218.5" width="290" height="112.5"/>
+                                <rect key="frame" x="15" y="313" width="398" height="430"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ingredientDetailsCell" id="Soc-Y3-U1Z" customClass="DetailsIngredientTableViewCell" customModule="Reciplease" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="290" height="48.5"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="398" height="48.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Soc-Y3-U1Z" id="q4P-tm-uDO">
-                                            <rect key="frame" x="0.0" y="0.0" width="290" height="48.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="48.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ingredient" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewr-X2-ZD9">
-                                                    <rect key="frame" x="16" y="11" width="88.5" height="26.5"/>
+                                                    <rect key="frame" x="20.000000000000007" y="10.999999999999998" width="88.666666666666686" height="26.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="20"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -271,25 +281,25 @@
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="rLK-GE-3S1">
-                                <rect key="frame" x="110" y="104" width="100" height="272"/>
+                                <rect key="frame" x="164" y="148" width="100" height="630"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="LL3-Lj-Hve"/>
                                 </constraints>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0s-A5-dAR" userLabel="Image View + Title">
-                                <rect key="frame" x="0.0" y="44" width="320" height="149.5"/>
+                                <rect key="frame" x="0.0" y="88" width="428" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_Default_Recipe" translatesAutoresizingMaskIntoConstraints="NO" id="g1L-IF-a5o">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="200"/>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="86S-6f-cWH">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="200"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Recipe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEu-hV-b1B">
-                                        <rect key="frame" x="94.5" y="111.5" width="131" height="33"/>
+                                        <rect key="frame" x="148.66666666666666" y="162" width="130.99999999999997" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -337,7 +347,7 @@
                     <navigationItem key="navigationItem" id="j3d-p4-MAE">
                         <barButtonItem key="rightBarButtonItem" style="done" id="y4e-2a-Mxr">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mKZ-wo-yCe">
-                                <rect key="frame" x="282" y="9" width="22" height="26"/>
+                                <rect key="frame" x="386" y="9" width="22" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" image="star" catalog="system"/>
@@ -382,7 +392,7 @@
                     <tabBarItem key="tabBarItem" title="Search" id="PoI-wf-VKe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SxQ-uu-kYK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
@@ -408,7 +418,7 @@
                     <tabBarItem key="tabBarItem" title="Favorite" id="Gz5-kp-Fng"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sv0-A2-leC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
@@ -429,35 +439,35 @@
             <objects>
                 <tableViewController id="GEt-IO-blH" customClass="RecipeListViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sp0-K3-Ngh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="125" id="No2-Mb-qwy" customClass="RecipeTableViewCell" customModule="Reciplease" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="24.5" width="320" height="125"/>
+                                <rect key="frame" x="0.0" y="24.333333969116211" width="428" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="No2-Mb-qwy" id="jPh-Tn-ewX">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="125"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_Default_Recipe" translatesAutoresizingMaskIntoConstraints="NO" id="ThP-oA-3N3">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="428" height="125"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oOO-bA-jjc" userLabel="Recipe View">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="428" height="125"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7x-Wj-3QF" userLabel="Shadow View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="428" height="125"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xe6-Ze-7BW" userLabel="Details View">
-                                                    <rect key="frame" x="205" y="25" width="100" height="45"/>
+                                                    <rect key="frame" x="313" y="25" width="100" height="45"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_Ardoise" translatesAutoresizingMaskIntoConstraints="NO" id="eG1-Qb-SsU">
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="45"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 mn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dvt-C1-Pmm">
-                                                            <rect key="frame" x="5" y="14.5" width="38.5" height="20.5"/>
+                                                            <rect key="frame" x="5" y="14.666666666666663" width="38.666666666666664" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -486,17 +496,17 @@
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZiM-rh-dYs" userLabel="Recipe Label">
-                                                    <rect key="frame" x="15" y="59" width="187" height="51"/>
+                                                    <rect key="frame" x="15" y="59.333333333333343" width="295" height="50.666666666666657"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main Title Recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yY-MM-V2s">
-                                                            <rect key="frame" x="0.0" y="0.0" width="130" height="21.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="130" height="21.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                             <color key="shadowColor" red="0.050980392159999999" green="0.1019607843" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqw-wk-zLT" userLabel="ingredient recipe Label">
-                                                            <rect key="frame" x="0.0" y="29.5" width="42" height="21.5"/>
+                                                            <rect key="frame" x="0.0" y="29.333333333333336" width="41.666666666666664" height="21.333333333333336"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>

@@ -75,7 +75,7 @@ extension RecipeDetailsViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.ingredientDetailsTitleLabel.text = "- \(recipe?.ingredientLines[indexPath.row])"
+        cell.ingredientDetailsTitleLabel.text = "- \(recipe?.ingredientLines[indexPath.row] ?? "")"
         
         return cell
     }

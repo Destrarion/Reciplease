@@ -11,9 +11,9 @@ protocol FridgeServiceDelegate: AnyObject {
     func ingredientsDidChange()
 }
 
-// Enumeration concerning when adding ingredient if error happen.
-// Each case will return a string
-// Used for AlertManager that will open a Pop up with the errorDescription string corresponding to the error
+/// Enumeration concerning when adding ingredient if error happen.
+/// Each case will return a string
+/// Used for AlertManager that will open a Pop up with the errorDescription string corresponding to the error
 enum FridgeServiceError: Error {
     case failedToAddIngredientIsEmpty
     case failedToAddIngredientIsAlreadyAdded
@@ -32,18 +32,18 @@ class FridgeService {
     
     weak var delegate: FridgeServiceDelegate?
     
-    // Ingredients is a array corresponding to what the user added in the Fridge.
-    // Ingredients are added or deleted in the Fridge
-    // Ingredients are showed in the TableView in the Fridge.
-    // Each time ingredients is modified, the delegate update in the FridgeViewController the TableView
+    /// Ingredients is a array corresponding to what the user added in the Fridge.
+    /// Ingredients are added or deleted in the Fridge
+    /// Ingredients are showed in the TableView in the Fridge.
+    /// Each time ingredients is modified, the delegate update in the FridgeViewController the TableView
     var ingredients: [String] = [] {
         didSet {
             delegate?.ingredientsDidChange()
         }
     }
     
-    // Function add is used when the user is adding ingredients in the variable ingredients
-    // The ingredients string is lowercased and
+    /// Function add is used when the user is adding ingredients in the variable ingredients
+    /// The ingredients string is lowercased and
     func add(ingredient: String) -> Result<Void, FridgeServiceError>  {
         
         

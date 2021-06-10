@@ -2,7 +2,7 @@ import UIKit
 
 
 class AlertManager {
-    func presentAlert(on viewController: UIViewController?, error: NetworkManagerError) {
+    func presentAlert(on viewController: UIViewController?, error: RecipeServiceError) {
         guard let viewController = viewController else { return }
         
         let alertController = UIAlertController(
