@@ -1,7 +1,9 @@
+#warning("Need Documentation")
+
 import UIKit
 
 
-class AlertManager {
+class AlertViewManager {
     func presentAlert(on viewController: UIViewController?, error: RecipeServiceError) {
         guard let viewController = viewController else { return }
         

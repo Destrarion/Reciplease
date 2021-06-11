@@ -1,12 +1,6 @@
-//
-//  FridgeService.swift
-//  Reciplease
-//
-//  Created by Fabien Dietrich on 02/04/2021.
-//
-
 import Foundation
 
+#warning("Documentation on protocol ?")
 protocol FridgeServiceDelegate: AnyObject {
     func ingredientsDidChange()
 }
@@ -43,9 +37,18 @@ class FridgeService {
     }
     
     /// Function add is used when the user is adding ingredients in the variable ingredients
-    /// The ingredients string is lowercased and
+    /// The ingredients string is lowercased and delete extra whitespaces at the start and the end of the string
+    /// - Parameter ingredient: This parameters contains the text of the outlet addIngredientTextField, it contain the ingredient the user written.
+    ///
+    /// Errors Possible:
+    /// ---
+    /// - **FailedToAddIngredientIsEmpty** : If the parametter *ingredient* is empty, to avoid getting an empty variable string into the ingredient of Fridgeservice, it return this error to avoid it.
+    /// - **FailedToAddIngredientIsAlreadyAdded** : If the ingredient is already added into the ingredient of FridgeService, since the request of recipe does not require number of ingredients when creating the requestURL for recipe, it return this error to avoid double the same ingredient in the Ingredient array.
+    /// - **FailedToAddIngredientContainsSpecialCharacter** : This error is destined to only accept regular expression. It call the Function of FridgeService isIngredientValid to verify if the string is a regular expression of the pattern. Avoiding Emoji or Different Alphabet (Russian keyboard for example)
+    /// - Returns:
+    ///     - **Success** : Add the trimmed ingredient to the array ingredients of FridgeService
+    ///     - **Failure** : Return FridgeServiceError depend on the Error Encountered
     func add(ingredient: String) -> Result<Void, FridgeServiceError>  {
-        
         
         let trimmedIngredient = ingredient.trimmingCharacters(in: .whitespaces).lowercased()
         print(trimmedIngredient)
@@ -69,14 +72,18 @@ class FridgeService {
     }
     
     
+    /// Function to remove all variables in the variable array ingredients of FridgeService
     func removeIngredients() {
         ingredients.removeAll()
     }
     
+    /// Remove a ingredient in the fridge
+    /// - Parameter index: Index of the array Ingredient
     func removeIngredient(at index: Int) {
         ingredients.remove(at: index)
     }
     
+    #warning("Test with russian Keyboard or Asian Keyboard if this does not occure an error")
     private func isIngredientValid(ingredient: String) -> Bool {
         let pattern = "^[/S A-Za-z]*$"
         

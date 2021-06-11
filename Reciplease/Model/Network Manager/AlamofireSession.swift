@@ -1,9 +1,4 @@
-//
-//  AlamofireSession.swift
-//  Reciplease
-//
-//  Created by Fabien Dietrich on 04/06/2021.
-//
+#warning("Need Documentation")
 
 import Foundation
 import Alamofire

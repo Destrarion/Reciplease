@@ -1,10 +1,12 @@
 import UIKit
 
+#warning("Need Documentation")
+
 class FridgeViewController: UIViewController {
     
     private let fridgeService = FridgeService()
     private let recipeService = RecipeService.shared
-    private let alertManager = AlertManager()
+    private let alertManager = AlertViewManager()
     
     
     override func viewDidLoad() {

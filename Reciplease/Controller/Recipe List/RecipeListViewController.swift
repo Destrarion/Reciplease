@@ -1,3 +1,4 @@
+#warning("Need Documentation")
 
 
 import UIKit
@@ -26,7 +27,7 @@ class RecipeListViewController: UITableViewController {
     }
 
     
-    var alertManager = AlertManager()
+    var alertManager = AlertViewManager()
     private var recipeService = RecipeService.shared
     
      

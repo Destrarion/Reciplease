@@ -1,9 +1,5 @@
-//
-//  RecipeTableViewCell.swift
-//  Reciplease
-//
-//  Created by Fabien Dietrich on 19/03/2021.
-//
+#warning("Need Documentation")
+
 
 extension Array where Element: Hashable {
     func removingDuplicates() -> [Element] {
@@ -36,7 +32,7 @@ class RecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var recipeService = RecipeService.shared
-    private var alertManager = AlertManager()
+    private var alertManager = AlertViewManager()
     
     private var gradientLayer: CAGradientLayer?
 

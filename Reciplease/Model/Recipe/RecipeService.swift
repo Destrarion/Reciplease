@@ -17,8 +17,15 @@ enum RecipeServiceError: Error {
 
 class RecipeService {
     
+    /// Singleton Pattern for RecipeService. When Calling RecipeService, thank to Singleton pattern, it will be the same instance that wil be called
     static let shared = RecipeService()
     
+    #warning("need more details on documentation")
+    /// Initialiser of RecipeService.
+    /// Using initialiser to personalise the networkManager and the RecipeUrlProvider in case this is for the code or for the test
+    /// - Parameters:
+    ///   - networkManager:
+    ///   - recipeUrlProvider:
     init(
         networkManager: NetworkManagerProtocol = AlamofireNetworkManager(),
         recipeUrlProvider: RecipeUrlProviderProtocol = RecipeUrlProvider()
@@ -55,8 +62,7 @@ class RecipeService {
     }
     
     func getImageRecipe(recipe: Recipe , callback: @escaping (Result<Data, RecipeServiceError>)-> Void){
-        guard let urlImage = URL(string: recipe.image)
-        else {
+        guard let urlImage = URL(string: recipe.image) else {
             callback(.failure(.couldNotCreateURL))
             return
         }

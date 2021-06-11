@@ -1,3 +1,5 @@
+#warning("Need Documentation")
+
 import UIKit
 import SafariServices
 
@@ -33,7 +35,7 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
     
     var recipe: Recipe?
     private var recipeService = RecipeService.shared
-    private var alertManager = AlertManager()
+    private var alertManager = AlertViewManager()
     
     func getImage(recipe: Recipe) {
         activityIndicator.startAnimating()

@@ -4,7 +4,7 @@ import Foundation
 import Alamofire
 
 
-
+#warning("Need Documentation")
 protocol NetworkManagerProtocol {
     func fetch<T: Decodable>(url: URL, callback: @escaping (Result<T, NetworkManagerError>) -> Void)
     func fetchData(url: URL, callback: @escaping (Result<Data, NetworkManagerError>) -> Void)
@@ -19,6 +19,7 @@ class AlamofireNetworkManager: NetworkManagerProtocol {
     private let alamofireSession: AlamofireSessionProtocol
     
     
+
     func fetch<T>(url: URL, callback: @escaping (Result<T, NetworkManagerError>) -> Void) where T : Decodable {
         alamofireSession.fetchDecodable(url: url) { (response: DataResponse<T, AFError>) in
             

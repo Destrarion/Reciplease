@@ -1,9 +1,4 @@
-//
-//  AlamofireNetworkManagerMock.swift
-//  RecipleaseTests
-//
-//  Created by Fabien Dietrich on 04/06/2021.
-//
+#warning("Need Documentation")
 
 import Foundation
 @testable import Reciplease

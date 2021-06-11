@@ -1,5 +1,6 @@
 import Foundation
 
+#warning("Need documentation")
 enum NetworkManagerError: Error {
     case unknownError
     case responseCodeIsInvalid
