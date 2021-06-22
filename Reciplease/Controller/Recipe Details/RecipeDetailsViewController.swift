@@ -22,6 +22,8 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageRecipe: UIImageView!
     @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var favoriteButton: UIButton!
+    
     
     @IBAction func didTapOnOpenInstructionButton() {
         guard let recipeUrlString = recipe?.url,
@@ -32,6 +34,12 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         present(safariViewController, animated: true, completion: nil)
         
     }
+    
+    @IBAction func didTapFavoriteButton() {
+        guard let recipe = recipe else { return }
+        recipeService.toggleRecipeToFavorite(recipe: recipe)
+    }
+    
     
     var recipe: Recipe?
     private var recipeService = RecipeService.shared

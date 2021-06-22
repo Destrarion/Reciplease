@@ -351,12 +351,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" image="star" catalog="system"/>
+                                <connections>
+                                    <action selector="didTapFavoriteButton" destination="iGN-Ra-BrR" eventType="touchUpInside" id="2sP-09-YJo"/>
+                                </connections>
                             </button>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="rLK-GE-3S1" id="9MB-CA-3dW"/>
+                        <outlet property="favoriteButton" destination="mKZ-wo-yCe" id="Xxb-NA-V8P"/>
                         <outlet property="gradientView" destination="86S-6f-cWH" id="WYw-x8-cag"/>
                         <outlet property="imageRecipe" destination="g1L-IF-a5o" id="lvs-d2-ecY"/>
                         <outlet property="ingredientsTableView" destination="hHo-yc-weD" id="D4C-d9-4BF"/>

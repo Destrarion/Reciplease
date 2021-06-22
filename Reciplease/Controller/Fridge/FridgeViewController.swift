@@ -63,12 +63,20 @@ class FridgeViewController: UIViewController {
                 }
             }
         }
-        
-        
     }
     
     @IBAction func addIngredientInFridge(_ sender: UIButton) {
         addIngredient()
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if let recipeListViewController = segue.destination as? RecipeListViewController {
+            recipeListViewController.shouldDisplayFavorite = false
+        }
+        
     }
     
     private func addIngredient() {

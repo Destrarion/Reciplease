@@ -5,6 +5,14 @@ import UIKit
 
 class RecipeListViewController: UITableViewController {
     
+    var shouldDisplayFavorite = true
+    
+    private var recipesToDisplay: [Recipe] {
+        shouldDisplayFavorite ?
+            recipeService.favoritedRecipes :
+            recipeService.searchedRecipes
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundImageSetting(background: "Background_Ardoise")
@@ -45,7 +53,7 @@ class RecipeListViewController: UITableViewController {
    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipeService.recipes.count
+        recipesToDisplay.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,7 +61,7 @@ class RecipeListViewController: UITableViewController {
             return UITableViewCell()
         }
         
-        let recipe = recipeService.recipes[indexPath.row]
+        let recipe = recipesToDisplay[indexPath.row]
         
         cell.configure(recipe: recipe)
         
@@ -64,7 +72,7 @@ class RecipeListViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let recipe = recipeService.recipes[indexPath.row]
+        let recipe = recipesToDisplay[indexPath.row]
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "GoToRecipeDetailsSegue", sender: recipe)
         }

@@ -1,6 +1,5 @@
 import Foundation
 
-#warning("Documentation on protocol ?")
 protocol FridgeServiceDelegate: AnyObject {
     func ingredientsDidChange()
 }
