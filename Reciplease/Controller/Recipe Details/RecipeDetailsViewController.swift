@@ -1,4 +1,6 @@
 #warning("Need Documentation")
+#warning("title on image need an gradient")
+#warning("total timer sur image")
 
 import UIKit
 import SafariServices
@@ -10,8 +12,13 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         setupIngredientTableView()
         titleRecipeLabel.text = recipe?.label
         getImage(recipe: recipe!)
+        switchFavoriteButton(recipe: recipe!)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        switchFavoriteButton(recipe: recipe!)
+    }
     private func setupIngredientTableView() {
         ingredientsTableView.delegate = self
         ingredientsTableView.dataSource = self
@@ -38,12 +45,16 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
     @IBAction func didTapFavoriteButton() {
         guard let recipe = recipe else { return }
         recipeService.toggleRecipeToFavorite(recipe: recipe)
+        switchFavoriteButton(recipe: recipe)
+        
     }
     
     
     var recipe: Recipe?
     private var recipeService = RecipeService.shared
     private var alertManager = AlertViewManager()
+    
+    private var gradientLayer: CAGradientLayer?
     
     func getImage(recipe: Recipe) {
         activityIndicator.startAnimating()
@@ -73,6 +84,14 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         gradientLayer.frame = CGRect(x: gradientView.frame.minX, y: 50, width: gradientView.frame.width, height: gradientView.frame.height)
         gradientLayer.colors = [UIColor(cgColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)), UIColor.black.cgColor]
         gradientView.layer.addSublayer(gradientLayer)
+    }
+    
+    func switchFavoriteButton(recipe : Recipe) {
+        if recipeService.isRecipeAlreadyFavorited(recipe: recipe){
+            favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        } else {
+            favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+        }
     }
 }
 

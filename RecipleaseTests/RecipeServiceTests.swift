@@ -36,18 +36,14 @@ class RecipeServiceTests: XCTestCase {
         recipeService.getRecipes(ingredients: ["beef"]) { result in
             switch result {
             case .failure: XCTFail()
-            case .success:
-                XCTAssertEqual(recipeService.recipes.first!.label, "Pizza")
+            case .success :
+                XCTAssertEqual(recipeService.searchedRecipes.first!.label, "Pizza")
             }
         }
-
-
-
     }
     
   
     // MARK: Test RecipeServiceError
-    #warning("not understood how to set error in the URL")
     func test_givenBadUrlProviderl_whenGetRecipes_thenErrorCouldNotCreateUrl() {
         let recipeUrlProviderMock = RecipeUrlProviderMock()
         let recipeService = RecipeService(recipeUrlProvider: recipeUrlProviderMock)
@@ -75,27 +71,13 @@ class RecipeServiceTests: XCTestCase {
         let recipeService = RecipeService()
         
         let recipe = Recipe(
-                uri: "",
-                label: "Pizza",
-                image: " ",
-                source: "",
-                url: "",
-                shareAs: "",
-                yield: 3,
-                dietLabels: [],
-                healthLabels: [],
-                cautions: [],
-                ingredientLines: [],
-                ingredients: [],
-                calories: 4,
-                totalWeight: 4,
-                totalTime: 4,
-                cuisineType: nil,
-                mealType: nil,
-                dishType: nil,
-                totalNutrients: [:],
-                totalDaily: [:]
-            )
+            label: "Pizza",
+            image: "",
+            url: "",
+            ingredientLines: [],
+            ingredients: [],
+            totalTime: 4
+        )
         
         let expectation = expectation(description: "Waiting for queue change")
         
@@ -120,27 +102,13 @@ class RecipeServiceTests: XCTestCase {
         let recipeService = RecipeService(networkManager: networkManagerMock)
         
         let recipe = Recipe(
-                uri: "",
-                label: "Pizza",
-                image: "test.com",
-                source: "",
-                url: "",
-                shareAs: "",
-                yield: 3,
-                dietLabels: [],
-                healthLabels: [],
-                cautions: [],
-                ingredientLines: [],
-                ingredients: [],
-                calories: 4,
-                totalWeight: 4,
-                totalTime: 4,
-                cuisineType: nil,
-                mealType: nil,
-                dishType: nil,
-                totalNutrients: [:],
-                totalDaily: [:]
-            )
+            label: "Pizza",
+            image: "www.google.com",
+            url: "",
+            ingredientLines: [],
+            ingredients: [],
+            totalTime: 4
+        )
         
         let expectation = expectation(description: "Waiting for queue change")
         
@@ -163,27 +131,13 @@ class RecipeServiceTests: XCTestCase {
         let recipeService = RecipeService(networkManager: networkManagerMock)
         
         let recipe = Recipe(
-                uri: "",
-                label: "Pizza",
-                image: "test.com",
-                source: "",
-                url: "",
-                shareAs: "",
-                yield: 3,
-                dietLabels: [],
-                healthLabels: [],
-                cautions: [],
-                ingredientLines: [],
-                ingredients: [],
-                calories: 4,
-                totalWeight: 4,
-                totalTime: 4,
-                cuisineType: nil,
-                mealType: nil,
-                dishType: nil,
-                totalNutrients: [:],
-                totalDaily: [:]
-            )
+            label: "Pizza",
+            image: "www.google.com",
+            url: "",
+            ingredientLines: [],
+            ingredients: [],
+            totalTime: 4
+        )
         
         let expectation = expectation(description: "Waiting for queue change")
         
@@ -199,6 +153,89 @@ class RecipeServiceTests: XCTestCase {
         
         
         wait(for: [expectation], timeout: 0.1)
+    }
+    
+    
+    
+    func test_givenRecipeWithCookingTotalTime2_whenFormat_thenGet2m() {
+        
+        
+        let recipe = Recipe(
+            label: "Pizza",
+            image: "www.google.com",
+            url: "",
+            ingredientLines: [],
+            ingredients: [],
+            totalTime: 2
+        )
+        
+        XCTAssertEqual(recipe.formatCookingTimeToString(), "2m")
+        
+    }
+    
+    func test_givenRecipeWithCookingTotalTime2point2_whenFormat_thenGet2m() {
+        
+        
+        let recipe = Recipe(
+            label: "Pizza",
+            image: "www.google.com",
+            url: "",
+            ingredientLines: [],
+            ingredients: [],
+            totalTime: 2.2
+        )
+        
+        XCTAssertEqual(recipe.formatCookingTimeToString(), "2m")
+        
+    }
+    
+    func test_givenRecipeWithCookingTotalTime0_whenFormat_thenGetDefaultDashes() {
+        
+        
+        let recipe = Recipe(
+            label: "Pizza",
+            image: "www.google.com",
+            url: "",
+            ingredientLines: [],
+            ingredients: [],
+            totalTime: 0
+        )
+        
+        XCTAssertEqual(recipe.formatCookingTimeToString(), "--")
+        
+    }
+    
+    func test_givenRecipeWithCookingTotalTime60_whenFormat_thenGet1h() {
+        
+        
+        let recipe = Recipe(
+            label: "Pizza",
+            image: "www.google.com",
+            url: "",
+            ingredientLines: [],
+            ingredients: [],
+            totalTime: 60
+        )
+        
+        XCTAssertEqual(recipe.formatCookingTimeToString(), "1h")
+        
+    }
+
+    
+    func test_givenRecipeWithCookingTotalTime10000_whenFormat_thenGet1h() {
+        
+        
+        let recipe = Recipe(
+            label: "Pizza",
+            image: "www.google.com",
+            url: "",
+            ingredientLines: [],
+            ingredients: [],
+            totalTime: 10000
+        )
+        
+        XCTAssertEqual(recipe.formatCookingTimeToString(), "6d 23h")
+        
     }
 
 }

@@ -7,7 +7,7 @@ import Foundation
 
 class AlamofireNetworkManagerSuccessMock: NetworkManagerProtocol {
     func fetch<T>(url: URL, callback: @escaping (Result<T, NetworkManagerError>) -> Void) where T : Decodable {
-        let recipeResponse = RecipeResponse(q: "", from: 0, to: 10, more: true, count: 5, hits: [
+        let recipeResponse = RecipeResponse( hits: [
             Hit(recipe: Recipe(
                 label: "Pizza",
                 image: "",

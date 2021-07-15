@@ -1,13 +1,6 @@
-//
-//  RecipleaseTabBarController.swift
-//  Reciplease
-//
-//  Created by Fabien Dietrich on 19/03/2021.
-//
-
 import Foundation
-
-
+#warning("need documentation")
+#warning("alpha nécessaire, tab bar trop invisible sur RecipleList")
 import UIKit
 
 class RecipleaseTabBarController: UITabBarController {

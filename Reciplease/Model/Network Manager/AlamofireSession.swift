@@ -1,4 +1,4 @@
-#warning("Need Documentation")
+
 
 import Foundation
 import Alamofire
@@ -11,6 +11,7 @@ protocol AlamofireSessionProtocol {
 }
 
 
+/// Class for using AlamoFire. For fetching Data and JsonData
 class AlamofireSession: AlamofireSessionProtocol {
     
     func fetchDecodable<T: Decodable>(url: URL, completion: @escaping (DataResponse<T, AFError>) -> Void) {

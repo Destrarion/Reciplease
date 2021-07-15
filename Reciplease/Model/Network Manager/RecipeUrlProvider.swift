@@ -1,14 +1,35 @@
-#warning("Need Documentation")
-
 import Foundation
 
 protocol RecipeUrlProviderProtocol {
     func createRecipeRequestUrl(ingredients: [String]) -> URL?
 }
 
+/// Main class to create the URL for fetching API for recipe.
 class RecipeUrlProvider: RecipeUrlProviderProtocol {
     
     
+    /// Create a URL fitting with the HTML with the ingredient
+    ///
+    /// Using urlComponent to create the URL
+    /// 1. At first the function add in a variable String each ingredient in the array Ingredient in the fridge.
+    /// For each ingredient in the array, check if the array is empty, if not, add an "," to the ingredientQuery.
+    ///
+    /// 2.  Creating the URL components, we add :
+    ///     * Scheme = The scheme subcomponent of the URL.
+    ///     * Host = The host subcomponent.
+    ///     * Path = The path subcomponent.
+    ///
+    ///     And the Query items :
+    ///     * q = Ingredients we added in the variable string ingredientQuary
+    ///     * app_id = App_id found in the account of Edaman, in the dashboard -> Application -> Recipe Search API section -> ID  (https://developer.edamam.com/admin/applications)
+    ///     * app_key= App_key found in the account of Edaman, in the dashboard -> Application -> Recipe Search API section ->  click on the row for the same ID and add the key
+    ///     * from = The minimum of recipe
+    ///     * to = the maximum of recipe , Developper account is allow to get to max 100 result.
+    ///
+    /// 3. Then it return the urlComponents.url
+    ///
+    /// - Parameter ingredients: Ingredient in the Fridge
+    /// - Returns: URL created with URLComponents ( urlComponents.url )
     func createRecipeRequestUrl(ingredients: [String]) -> URL? {
         
         var ingredientQuery = ""

@@ -5,14 +5,9 @@
 
 import Foundation
 
-#warning("Need Documentation")
 
 // MARK: - RecipeResponse
 struct RecipeResponse: Codable {
-    let q: String
-    let from, to: Int
-    let more: Bool
-    let count: Int
     let hits: [Hit]
 }
 
@@ -23,19 +18,39 @@ struct Hit: Codable {
 
 // MARK: - Recipe
 struct Recipe: Codable {
-    let uri: String
     let label: String
     let image: String
-    let source: String
     let url: String
-    let shareAs: String
-    let yield: Int
-    let dietLabels, healthLabels, cautions, ingredientLines: [String]
+    let ingredientLines: [String]
     let ingredients: [Ingredient]
-    let calories, totalWeight: Double
+    
+    
+    /// Total cooking / prepration time for the recipe in minutes
     let totalTime: Double
-    let cuisineType, mealType, dishType: [String]?
-    let totalNutrients, totalDaily: [String: Total]
+    
+    func formatCookingTimeToString() -> String? {
+        
+        guard totalTime != 0.0 else {
+            return "--"
+        }
+        
+        let formatter = DateComponentsFormatter()
+        
+        formatter.unitsStyle = .abbreviated
+        formatter.allowedUnits = [.day, .hour, .minute]
+        formatter.maximumUnitCount = 2
+        
+
+        
+        let dateComponents = DateComponents(minute: Int(totalTime))
+    
+    
+        
+        return formatter.string(for: dateComponents)
+        
+        
+        // return Int(round(totalTime / 60)).description + "m"
+    }
 }
 
 
@@ -43,21 +58,5 @@ struct Recipe: Codable {
 
 // MARK: - Ingredient
 struct Ingredient: Codable {
-    let text: String
-    let weight: Double
-    let foodCategory, foodID: String?
-    let image: String?
-
-    enum CodingKeys: String, CodingKey {
-        case text, weight, foodCategory
-        case foodID = "foodId"
-        case image
-    }
-}
-
-// MARK: - Total
-struct Total: Codable {
-    let label: String
-    let quantity: Double
-    let unit: String
+    let foodCategory: String?
 }

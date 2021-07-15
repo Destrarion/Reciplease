@@ -7,9 +7,22 @@ protocol FridgeServiceDelegate: AnyObject {
 /// Enumeration concerning when adding ingredient if error happen.
 /// Each case will return a string
 /// Used for AlertManager that will open a Pop up with the errorDescription string corresponding to the error
+/// 1. Failed to add ingredient is empty : if the user give an white space ingredient, return this error
+/// 2. Failed to add ingredient is already added : If the ingredient is already added into the fridge
+///
+/// 3. Failed to add ingredient contains special character : if the ingredient contain special character.
+///  Example :
+///
+///     * Emoji : due to the emoji (📑) or their translation in unicode (Unicode: U+1F4D1, UTF-8: F0 9F 93 91)
+///     * Non Regular expression : due to URL and API not accepting other alphabetic than English ( example russian keyboard )
 enum FridgeServiceError: Error {
+    /// If the user give an white space ingredient, return this error
     case failedToAddIngredientIsEmpty
+    /// If the ingredient is already added into the fridge
     case failedToAddIngredientIsAlreadyAdded
+    /// If the ingredient contain special character.
+    /// * Emoji : due to the emoji (📑) or their translation in unicode (Unicode: U+1F4D1, UTF-8: F0 9F 93 91)
+    /// * Non Regular expression : due to URL and API not accepting other alphabetic than English ( example russian keyboard )
     case failedToAddIngredientContainsSpecialCharacter
     
     var errorDescription: String {
@@ -64,7 +77,6 @@ class FridgeService {
             return .failure(.failedToAddIngredientContainsSpecialCharacter)
         }
         
-        
         ingredients.append(trimmedIngredient)
         print(ingredients)
         return .success(())
@@ -82,10 +94,13 @@ class FridgeService {
         ingredients.remove(at: index)
     }
     
-    #warning("Test with russian Keyboard or Asian Keyboard if this does not occure an error")
+    /// Function checking if the ingredient added by the user is valid as regularExpression with the given pattern to fit when creating URL for fetching recipe.
+    ///
+    /// More information about the pattern at (  https://cheatography.com/davechild/cheat-sheets/regular-expressions/ )
+    /// - Parameter ingredient: Ingredient the user give
+    /// - Returns: Boolean , false it the ingredient does not fit the pattern of regular expression, true if it fit the patter of regularexpression.
     private func isIngredientValid(ingredient: String) -> Bool {
         let pattern = "^[/S A-Za-z]*$"
-        
         
         let result = ingredient.range(of: pattern, options: .regularExpression)
         

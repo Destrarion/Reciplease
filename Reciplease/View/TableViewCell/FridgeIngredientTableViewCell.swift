@@ -1,12 +1,8 @@
-//
-//  IngredientTableViewCell.swift
-//  Reciplease
-//
-//  Created by Fabien Dietrich on 02/04/2021.
-//
+
 
 import UIKit
 
+/// Class to customise cell for Fridge for the TableView showing the ingredients.
 class FridgeIngredientTableViewCell: UITableViewCell {
 
 

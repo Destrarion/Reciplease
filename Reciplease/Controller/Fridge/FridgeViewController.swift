@@ -44,6 +44,7 @@ class FridgeViewController: UIViewController {
     
     @IBAction func didTapOnClearButton() {
         fridgeService.removeIngredients()
+        HapticsManager.shared.notificationVibrate(for: .error)
     }
     
     
@@ -67,6 +68,7 @@ class FridgeViewController: UIViewController {
     
     @IBAction func addIngredientInFridge(_ sender: UIButton) {
         addIngredient()
+        HapticsManager.shared.notificationVibrate(for: .success)
     }
     
     
@@ -116,12 +118,14 @@ extension FridgeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteContextItem = UIContextualAction(style: .destructive, title: "DELETE IT") { [weak self] (action, view, boolValueClosure) in
             self?.fridgeService.removeIngredient(at: indexPath.row)
+            HapticsManager.shared.notificationVibrate(for: .error)
         }
         
         deleteContextItem.backgroundColor = .red
         
         
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteContextItem])
+        
         return swipeActions
     }
 }
@@ -136,7 +140,11 @@ extension FridgeViewController: FridgeServiceDelegate {
 
 extension FridgeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        addIngredient()
+        if textField.text?.isEmpty ?? true {
+            textField.resignFirstResponder()
+        } else {
+            addIngredient()
+        }
         return true
     }
 }

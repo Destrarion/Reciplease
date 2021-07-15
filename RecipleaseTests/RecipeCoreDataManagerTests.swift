@@ -55,27 +55,13 @@ class RecipeCoreDataManagerTests: XCTestCase {
     
     private func createSimpleRecipe(with title: String) -> Recipe {
         Recipe(
-           uri: "",
-           label: title,
-           image: "",
-           source: "",
-           url: "",
-           shareAs: "",
-           yield: 3,
-           dietLabels: [],
-           healthLabels: [],
-           cautions: [],
-           ingredientLines: [],
-           ingredients: [],
-           calories: 4,
-           totalWeight: 4,
-           totalTime: 4,
-           cuisineType: nil,
-           mealType: nil,
-           dishType: nil,
-           totalNutrients: [:],
-           totalDaily: [:]
-       )
+            label: title,
+            image: "",
+            url: "",
+            ingredientLines: [],
+            ingredients: [],
+            totalTime: 4
+        )
     }
 
     

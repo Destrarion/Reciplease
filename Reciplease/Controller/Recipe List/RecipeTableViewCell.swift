@@ -1,5 +1,7 @@
 #warning("Need Documentation")
 
+#warning("Si manque immage, doit avoir une immage plus représenative.")
+#warning("Si liste de favorit vide, doit avertir l'utilisateur et ne pas présenter une liste vide")
 
 extension Array where Element: Hashable {
     func removingDuplicates() -> [Element] {
@@ -44,7 +46,7 @@ class RecipeTableViewCell: UITableViewCell {
         lastLoadedRecipe = recipe
         
         recipeTitleLabel.text = recipe.label
-        totalTimeLabel.text = "\(recipe.totalTime)"
+        totalTimeLabel.text = recipe.formatCookingTimeToString()
         getImage(recipe: recipe)
         
         let recipeIngredientsSubtitle =
