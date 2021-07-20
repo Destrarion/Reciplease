@@ -305,11 +305,47 @@
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbh-Ve-p37" userLabel="Details View">
+                                        <rect key="frame" x="298" y="77.666666666666657" width="115" height="45"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_Ardoise" translatesAutoresizingMaskIntoConstraints="NO" id="Vaz-RF-1qP">
+                                                <rect key="frame" x="0.0" y="0.0" width="115" height="45"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 mn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpg-nd-uHg">
+                                                <rect key="frame" x="5" y="14.666666666666684" width="38.666666666666664" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timer_icon" translatesAutoresizingMaskIntoConstraints="NO" id="90t-kK-rbV" userLabel="Timer Icon">
+                                                <rect key="frame" x="75" y="5" width="35" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="35" id="IDW-g0-8U2"/>
+                                                    <constraint firstAttribute="height" constant="35" id="Uoh-9k-A1v"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="3iQ-RC-Qpq"/>
+                                            <constraint firstAttribute="bottom" secondItem="90t-kK-rbV" secondAttribute="bottom" constant="5" id="3jG-6R-uUk"/>
+                                            <constraint firstItem="90t-kK-rbV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gpg-nd-uHg" secondAttribute="trailing" constant="8" symbolic="YES" id="PGO-c0-HNX"/>
+                                            <constraint firstAttribute="width" constant="115" id="Rw6-8C-eSJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="90t-kK-rbV" secondAttribute="trailing" constant="5" id="SLh-Vp-LRR"/>
+                                            <constraint firstAttribute="trailing" secondItem="Vaz-RF-1qP" secondAttribute="trailing" id="THY-nN-pmJ"/>
+                                            <constraint firstItem="gpg-nd-uHg" firstAttribute="leading" secondItem="sbh-Ve-p37" secondAttribute="leading" constant="5" id="dSy-UX-aGu"/>
+                                            <constraint firstItem="Vaz-RF-1qP" firstAttribute="leading" secondItem="sbh-Ve-p37" secondAttribute="leading" id="kL3-ms-QTi"/>
+                                            <constraint firstAttribute="bottom" secondItem="gpg-nd-uHg" secondAttribute="bottom" constant="10" id="nQK-Mm-ztx"/>
+                                            <constraint firstItem="Vaz-RF-1qP" firstAttribute="top" secondItem="sbh-Ve-p37" secondAttribute="top" id="p8T-fg-QM1"/>
+                                            <constraint firstAttribute="bottom" secondItem="Vaz-RF-1qP" secondAttribute="bottom" id="tya-EK-2i5"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="86S-6f-cWH" firstAttribute="top" secondItem="e0s-A5-dAR" secondAttribute="top" id="2Qg-re-I5v"/>
                                     <constraint firstItem="g1L-IF-a5o" firstAttribute="top" secondItem="e0s-A5-dAR" secondAttribute="top" id="FHT-Th-2ct"/>
+                                    <constraint firstAttribute="trailing" secondItem="sbh-Ve-p37" secondAttribute="trailing" constant="15" id="IWY-nP-6Fz"/>
                                     <constraint firstItem="hEu-hV-b1B" firstAttribute="centerX" secondItem="e0s-A5-dAR" secondAttribute="centerX" id="LpE-Fh-sqY"/>
                                     <constraint firstItem="g1L-IF-a5o" firstAttribute="leading" secondItem="e0s-A5-dAR" secondAttribute="leading" id="RV4-eV-95L"/>
                                     <constraint firstAttribute="bottom" secondItem="hEu-hV-b1B" secondAttribute="bottom" constant="5" id="SKB-bL-Qqk"/>
@@ -317,6 +353,7 @@
                                     <constraint firstAttribute="bottom" secondItem="g1L-IF-a5o" secondAttribute="bottom" id="b4H-R2-nk4"/>
                                     <constraint firstAttribute="bottom" secondItem="86S-6f-cWH" secondAttribute="bottom" id="bFv-3V-2Ei"/>
                                     <constraint firstAttribute="width" secondItem="e0s-A5-dAR" secondAttribute="height" multiplier="107:50" id="eJP-sa-8tf"/>
+                                    <constraint firstItem="sbh-Ve-p37" firstAttribute="centerY" secondItem="e0s-A5-dAR" secondAttribute="centerY" id="hlp-zD-QRt"/>
                                     <constraint firstAttribute="trailing" secondItem="g1L-IF-a5o" secondAttribute="trailing" id="pID-9r-FKl"/>
                                     <constraint firstItem="86S-6f-cWH" firstAttribute="leading" secondItem="e0s-A5-dAR" secondAttribute="leading" id="ptL-LM-oZL"/>
                                 </constraints>
@@ -364,6 +401,7 @@
                         <outlet property="gradientView" destination="86S-6f-cWH" id="WYw-x8-cag"/>
                         <outlet property="imageRecipe" destination="g1L-IF-a5o" id="lvs-d2-ecY"/>
                         <outlet property="ingredientsTableView" destination="hHo-yc-weD" id="D4C-d9-4BF"/>
+                        <outlet property="timerLabel" destination="gpg-nd-uHg" id="KT9-Dv-w6J"/>
                         <outlet property="titleRecipeLabel" destination="hEu-hV-b1B" id="ada-bD-rh4"/>
                     </connections>
                 </viewController>
@@ -379,6 +417,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="5cX-Il-EyE" kind="relationship" relationship="viewControllers" id="Yzd-xJ-Roc"/>
@@ -574,12 +613,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bHL-GO-iuC"/>
+        <segue reference="hqx-2b-Ihf"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Ardoise Grise" width="379" height="380"/>
         <image name="Background_Ardoise" width="507" height="380"/>
-        <image name="Image_Default_Recipe" width="1366" height="768"/>
+        <image name="Image_Default_Recipe" width="428" height="268"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="timer_icon" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">

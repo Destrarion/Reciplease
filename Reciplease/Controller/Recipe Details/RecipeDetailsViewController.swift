@@ -1,7 +1,5 @@
 #warning("Need Documentation")
 #warning("title on image need an gradient")
-#warning("total timer sur image")
-
 import UIKit
 import SafariServices
 
@@ -12,6 +10,7 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         setupIngredientTableView()
         titleRecipeLabel.text = recipe?.label
         getImage(recipe: recipe!)
+        timerLabel.text = recipe?.formatCookingTimeToString()
         switchFavoriteButton(recipe: recipe!)
     }
     
@@ -30,6 +29,7 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var imageRecipe: UIImageView!
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var timerLabel: UILabel!
     
     
     @IBAction func didTapOnOpenInstructionButton() {
@@ -66,6 +66,7 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
                 switch result {
                 case .failure(let error):
                     print(error)
+                    self?.imageRecipe.image = UIImage(named: "Image_Default_Recipe")
                     self?.activityIndicator.stopAnimating()
                 case .success(let response):
                     guard recipe.label == self?.recipe?.label else { return }

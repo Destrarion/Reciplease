@@ -1,6 +1,5 @@
 #warning("Need Documentation")
 
-#warning("Si manque immage, doit avoir une immage plus représenative.")
 #warning("Si liste de favorit vide, doit avertir l'utilisateur et ne pas présenter une liste vide")
 
 extension Array where Element: Hashable {
@@ -34,8 +33,6 @@ class RecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var recipeService = RecipeService.shared
-    private var alertManager = AlertViewManager()
-    
     private var gradientLayer: CAGradientLayer?
 
     
@@ -64,8 +61,16 @@ class RecipeTableViewCell: UITableViewCell {
     func addGradient() {
         shadowView.layer.sublayers?.removeAll()
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: shadowView.frame.minX, y: 50, width: shadowView.frame.width, height: shadowView.frame.height)
-        gradientLayer.colors = [UIColor(cgColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)), UIColor.black.cgColor]
+        gradientLayer.frame = shadowView.frame
+        
+        
+        let bottomColor = UIColor.black.withAlphaComponent(0.8).cgColor
+        
+        gradientLayer.colors = [UIColor.clear.cgColor, bottomColor]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
+
         shadowView.layer.addSublayer(gradientLayer)
     }
     
@@ -78,18 +83,23 @@ class RecipeTableViewCell: UITableViewCell {
          ) { [weak self] (result) in
             DispatchQueue.main.async {
         
+                self?.activityIndicator.stopAnimating()
+                
                 switch result {
                 case .failure(let error):
                     print(error)
-                    self?.activityIndicator.stopAnimating()
+                    self?.recipeImageView.image = UIImage(named: "Image_Default_Recipe")
                 case .success(let response):
                     guard recipe.label == self?.lastLoadedRecipe?.label else { return }
-                    let loadedImage = UIImage(data: response)
-                    self?.recipeImageView.image = loadedImage
-                    self?.activityIndicator.stopAnimating()
-        
+                    if let loadedImage = UIImage(data: response) {
+                        self?.recipeImageView.image = loadedImage
+                    } else {
+                        self?.recipeImageView.image = UIImage(named: "Image_Default_Recipe")
+                    }
                 }
             }
         }
     }
+    
+    
 }

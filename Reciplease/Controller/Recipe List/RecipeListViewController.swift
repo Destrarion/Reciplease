@@ -1,5 +1,5 @@
 #warning("Need Documentation")
-
+#warning("navigation bar tint color")
 
 import UIKit
 
@@ -21,6 +21,10 @@ class RecipeListViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableView.reloadData()
+        
+        
+        // noRecipeLabel.hidden = !recipesToDisplay.isEmpty
+    
     }
     
     

@@ -8,7 +8,7 @@ class RecipleaseTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBar.backgroundImage = UIImage()
+        // tabBar.backgroundImage = UIImage()
         configureItems()
     }
     
