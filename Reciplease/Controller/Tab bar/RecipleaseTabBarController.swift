@@ -1,6 +1,5 @@
 import Foundation
 #warning("need documentation")
-#warning("alpha nécessaire, tab bar trop invisible sur RecipleList")
 import UIKit
 
 class RecipleaseTabBarController: UITabBarController {

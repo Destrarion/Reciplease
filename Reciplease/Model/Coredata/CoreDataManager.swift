@@ -1,9 +1,3 @@
-//
-#warning("check link below to fix'NSKeyedUnarchiveFromData' should not be used to for un-archiving and will be removed in a future release")
-/// https://www.hackingwithswift.com/forums/swiftui/can-i-make-this-warning-go-away/5074
-
-/// [error] fault: One or more models in this application are using transformable properties with transformer names that are either unset, or set to NSKeyedUnarchiveFromDataTransformerName. Please switch to using "NSSecureUnarchiveFromData" or a subclass of NSSecureUnarchiveFromDataTransformer instead. At some point, Core Data will default to using "NSSecureUnarchiveFromData" when nil is specified, and transformable properties containing classes that do not support NSSecureCoding will become unreadable.
-
 import Foundation
 import CoreData
 
@@ -62,12 +56,8 @@ class RecipeCoreDataManager: RecipeCoreDataManagerProtocol {
     /// - Parameter title: Title of the recipe to delete
     func deleteRecipe(with title: String) {
         let recipeEntities = getRecipeEntities()
-        print(recipeEntities)
         for recipeEntity in recipeEntities where recipeEntity.title == title {
             coreDataContextProvider.viewContext.delete(recipeEntity)
-            print(recipeEntity)
-            print("deleted")
-            print(recipeEntities)
             
         }
         

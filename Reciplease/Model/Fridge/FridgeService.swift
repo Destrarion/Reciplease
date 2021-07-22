@@ -24,12 +24,19 @@ enum FridgeServiceError: Error {
     /// * Emoji : due to the emoji (📑) or their translation in unicode (Unicode: U+1F4D1, UTF-8: F0 9F 93 91)
     /// * Non Regular expression : due to URL and API not accepting other alphabetic than English ( example russian keyboard )
     case failedToAddIngredientContainsSpecialCharacter
+    /// if the ingredient in Fridge is empty,
+    /// Error Description:
+    /// ---
+    /// " There is no ingredient added in the Fridge. Add Ingredient in Fridge to search new recipe"
+    ///
+    case noIngredientInFridge
     
     var errorDescription: String {
         switch self {
         case .failedToAddIngredientIsEmpty: return "Ingredient is empty"
         case .failedToAddIngredientIsAlreadyAdded: return "Ingredient is already added"
         case .failedToAddIngredientContainsSpecialCharacter: return "Ingredient contains special character"
+        case .noIngredientInFridge: return "There is no ingredient added in the Fridge. Add Ingredient in Fridge to search new recipe"
         }
     }
 }
@@ -63,7 +70,6 @@ class FridgeService {
     func add(ingredient: String) -> Result<Void, FridgeServiceError>  {
         
         let trimmedIngredient = ingredient.trimmingCharacters(in: .whitespaces).lowercased()
-        print(trimmedIngredient)
         
         guard !trimmedIngredient.isEmpty else {
             return .failure(.failedToAddIngredientIsEmpty)
@@ -78,7 +84,6 @@ class FridgeService {
         }
         
         ingredients.append(trimmedIngredient)
-        print(ingredients)
         return .success(())
     }
     

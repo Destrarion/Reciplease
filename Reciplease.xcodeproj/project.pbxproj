@@ -213,12 +213,12 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
-		5F3539EA261F51AB0073AFF2 /* Tab Bar  */ = {
+		5F3539EA261F51AB0073AFF2 /* Tab bar */ = {
 			isa = PBXGroup;
 			children = (
 				5FB776372604BC1B00CDA1FB /* RecipleaseTabBarController.swift */,
 			);
-			path = "Tab Bar ";
+			path = "Tab bar";
 			sourceTree = "<group>";
 		};
 		5F72BF39266097CD006608E5 /* NetworkTest */ = {
@@ -280,7 +280,7 @@
 				5F3539E5261F50ED0073AFF2 /* Fridge */,
 				5F3539E6261F51060073AFF2 /* Recipe List */,
 				5F3539E7261F51120073AFF2 /* Recipe Details */,
-				5F3539EA261F51AB0073AFF2 /* Tab Bar  */,
+				5F3539EA261F51AB0073AFF2 /* Tab bar */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

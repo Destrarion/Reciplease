@@ -12,6 +12,7 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         getImage(recipe: recipe!)
         timerLabel.text = recipe?.formatCookingTimeToString()
         switchFavoriteButton(recipe: recipe!)
+        addGradient()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,8 +39,9 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         else { return }
         
         let safariViewController = SFSafariViewController(url: recipeUrl)
+        safariViewController.preferredBarTintColor = UIColor.black
+        safariViewController.preferredControlTintColor = UIColor.white
         present(safariViewController, animated: true, completion: nil)
-        
     }
     
     @IBAction func didTapFavoriteButton() {
@@ -82,8 +84,16 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
     func addGradient() {
         gradientView.layer.sublayers?.removeAll()
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: gradientView.frame.minX, y: 50, width: gradientView.frame.width, height: gradientView.frame.height)
-        gradientLayer.colors = [UIColor(cgColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)), UIColor.black.cgColor]
+        gradientLayer.frame = gradientView.frame
+        
+        
+        let bottomColor = UIColor.black.withAlphaComponent(0.8).cgColor
+        
+        gradientLayer.colors = [UIColor.clear.cgColor, bottomColor]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
+
         gradientView.layer.addSublayer(gradientLayer)
     }
     

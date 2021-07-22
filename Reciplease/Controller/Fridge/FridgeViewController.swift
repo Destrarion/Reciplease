@@ -47,23 +47,28 @@ class FridgeViewController: UIViewController {
         HapticsManager.shared.notificationVibrate(for: .error)
     }
     
-    
     @IBAction func didTapGoToRecipeListButton(_ sender: UIButton) {
         activityIndicator.startAnimating()
+        searchButton.isHidden = true
+        if fridgeService.ingredients == [] {
+            alertManager.presentAlert(on: self, error: .noIngredientInFridge)
+            searchRecipeProcessingEnd()
+            return
+        }
         if fridgeService.ingredients != [] {
             recipeService.getRecipes(ingredients: fridgeService.ingredients) { [weak self] (result) in
                 DispatchQueue.main.async {
                     switch result {
                     case .failure(let error):
                         self?.alertManager.presentAlert(on: self, error: error)
-                        self?.activityIndicator.stopAnimating()
                     case .success:
                         self?.performSegue(withIdentifier: "GoToRecipeListSegue", sender: nil)
-                        self?.activityIndicator.stopAnimating()
                     }
+                    self?.searchRecipeProcessingEnd()
                 }
             }
         }
+        
     }
     
     @IBAction func addIngredientInFridge(_ sender: UIButton) {
@@ -79,6 +84,12 @@ class FridgeViewController: UIViewController {
             recipeListViewController.shouldDisplayFavorite = false
         }
         
+    }
+    
+    #warning("need a new name")
+    func searchRecipeProcessingEnd(){
+        searchButton.isHidden = false
+        activityIndicator.stopAnimating()
     }
     
     private func addIngredient() {

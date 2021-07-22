@@ -11,6 +11,8 @@ enum RecipeServiceError: Error {
     case couldNotCreateURL
     /// If the image could not be received from the API.
     case failedToGetRecipeImage
+    /// If the device is not connected to internet
+    case internetNotReachable
     
     /// Description of the error in String of the error occured.
     var errorDescription: String {
@@ -18,6 +20,7 @@ enum RecipeServiceError: Error {
         case .couldNotCreateURL: return "Could not create url"
         case .failedToGetRecipeImage: return "Failed to get recipe image"
         case .failedToGetRecipes: return "Failed to get recipes"
+        case .internetNotReachable: return " You are currently not connected to internet"
         }
     }
 }
@@ -48,7 +51,7 @@ class RecipeService {
     private let recipeCoreDataManager: RecipeCoreDataManagerProtocol
     
     var ingredients: [String] = []
-
+    
     /// Variable array of searched recipe via alamofire with the ingredient on the fridge. Used for searching new recipe
     var searchedRecipes: [Recipe] = []
     
@@ -63,21 +66,25 @@ class RecipeService {
     ///   - ingredients: Ingredients stocked in the variable array ingredients in RecipeService
     ///   - callback: Void in the case of success, receive the hit of the recipe, else if error return RecipeServiceError
     func getRecipes(ingredients: [String], callback: @escaping (Result<Void, RecipeServiceError>) -> Void) {
-        guard let requestURL = recipeUrlProvider.createRecipeRequestUrl(ingredients: ingredients) else {
-            callback(.failure(.couldNotCreateURL))
-            return
-        }
-        networkManager.fetch(url: requestURL) { (result: Result<RecipeResponse, NetworkManagerError>) in
-            switch result {
-            case .failure:
-                callback(.failure(.failedToGetRecipes))
-                return
-            case .success(let response):
-                let recipes = response.hits.map { $0.recipe }
-                self.searchedRecipes = recipes
-                callback(.success(()))
+        if networkManager.isConnectedToInternet() == true {
+            guard let requestURL = recipeUrlProvider.createRecipeRequestUrl(ingredients: ingredients) else {
+                callback(.failure(.couldNotCreateURL))
                 return
             }
+            networkManager.fetch(url: requestURL) { (result: Result<RecipeResponse, NetworkManagerError>) in
+                switch result {
+                case .failure:
+                    callback(.failure(.failedToGetRecipes))
+                    return
+                case .success(let response):
+                    let recipes = response.hits.map { $0.recipe }
+                    self.searchedRecipes = recipes
+                    callback(.success(()))
+                    return
+                }
+            }
+        } else {
+            callback(.failure(.internetNotReachable))
         }
     }
     
@@ -112,7 +119,7 @@ class RecipeService {
         } else {
             recipeCoreDataManager.addRecipe(recipe: recipe)
         }
-       
+        
     }
     
     
@@ -125,8 +132,8 @@ class RecipeService {
             favoritedRecipe.label == recipe.label
         }
     }
-
-  
+    
+    
     
     
     

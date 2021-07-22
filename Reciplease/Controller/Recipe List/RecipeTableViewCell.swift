@@ -1,6 +1,5 @@
 #warning("Need Documentation")
 
-#warning("Si liste de favorit vide, doit avertir l'utilisateur et ne pas présenter une liste vide")
 
 extension Array where Element: Hashable {
     func removingDuplicates() -> [Element] {
@@ -75,7 +74,7 @@ class RecipeTableViewCell: UITableViewCell {
     }
     
     
-
+    #warning("move somewhere else")
     func getImage(recipe: Recipe) {
         activityIndicator.startAnimating()
         recipeService.getImageRecipe(

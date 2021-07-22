@@ -48,8 +48,6 @@ struct Recipe: Codable {
         
         return formatter.string(for: dateComponents)
         
-        
-        // return Int(round(totalTime / 60)).description + "m"
     }
 }
 

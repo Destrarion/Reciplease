@@ -1,5 +1,4 @@
 #warning("Need Documentation")
-#warning("navigation bar tint color")
 
 import UIKit
 
@@ -21,13 +20,30 @@ class RecipeListViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableView.reloadData()
+        messageIfNoFavorite()
         
         
         // noRecipeLabel.hidden = !recipesToDisplay.isEmpty
-    
+        
     }
     
-    
+    #warning("currently working on it")
+    func messageIfNoFavorite() {
+        let title = UILabel()
+        title.text = "You have currently no favorite recipe"
+        title.font = UIFont(name: "Marker felt", size: 20)
+        title.numberOfLines = 2
+        title.center = self.view.center
+        title.textColor = UIColor.white
+        title.sizeToFit()
+        self.view.addSubview(title)
+        
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        #warning("must put the message more center above")
+        title.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        title.textAlignment = .center
+    }
     
     
     
@@ -37,12 +53,12 @@ class RecipeListViewController: UITableViewController {
         ardoiseImageView.contentMode = .scaleAspectFill
         tableView.backgroundView = ardoiseImageView
     }
-
+    
     
     var alertManager = AlertViewManager()
     private var recipeService = RecipeService.shared
     
-     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if
@@ -54,7 +70,7 @@ class RecipeListViewController: UITableViewController {
         
     }
     
-   
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         recipesToDisplay.count
@@ -73,7 +89,7 @@ class RecipeListViewController: UITableViewController {
     }
     
     
-
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let recipe = recipesToDisplay[indexPath.row]
