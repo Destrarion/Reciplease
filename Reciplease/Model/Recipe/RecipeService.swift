@@ -4,7 +4,7 @@ import Foundation
 /// - Failed to get Recipe: if the device couldn't get any recipe, due to device not connected to internet or other forms.
 /// - Could not create URL: if the RecipeUrlProvider or the url of the image failed to be created.
 /// - Failed to get recipe Image: if the image could not be received from the API.
-enum RecipeServiceError: Error {
+enum RecipeServiceError: LocalizedError {
     /// If the device couldn't get any recipe, due to device not connected to internet or other forms.
     case failedToGetRecipes
     /// If the RecipeUrlProvider or the url of the image failed to be created.
@@ -66,7 +66,7 @@ class RecipeService {
     ///   - ingredients: Ingredients stocked in the variable array ingredients in RecipeService
     ///   - callback: Void in the case of success, receive the hit of the recipe, else if error return RecipeServiceError
     func getRecipes(ingredients: [String], callback: @escaping (Result<Void, RecipeServiceError>) -> Void) {
-        if networkManager.isConnectedToInternet() == true {
+        if networkManager.isConnectedToInternet() {
             guard let requestURL = recipeUrlProvider.createRecipeRequestUrl(ingredients: ingredients) else {
                 callback(.failure(.couldNotCreateURL))
                 return
@@ -78,6 +78,13 @@ class RecipeService {
                     return
                 case .success(let response):
                     let recipes = response.hits.map { $0.recipe }
+                    
+                    guard !recipes.isEmpty else {
+                        callback(.failure(.failedToGetRecipes))
+                        return
+                    }
+                    
+                    
                     self.searchedRecipes = recipes
                     callback(.success(()))
                     return

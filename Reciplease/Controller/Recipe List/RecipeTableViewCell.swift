@@ -46,11 +46,9 @@ class RecipeTableViewCell: UITableViewCell {
         getImage(recipe: recipe)
         
         let recipeIngredientsSubtitle =
-            Set(
-                recipe.ingredients
-                    .compactMap { $0.foodCategory }
-            )
-            .joined(separator: ", ")
+            recipe.ingredients
+                .compactMap { $0.foodCategory }
+                .joined(separator: ", ")
         
         ingredientRecipeLabel.text = recipeIngredientsSubtitle
         addGradient()

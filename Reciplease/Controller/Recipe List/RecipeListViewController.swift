@@ -4,6 +4,8 @@ import UIKit
 
 class RecipeListViewController: UITableViewController {
     
+    private var noRecipeLabel: UILabel?
+    
     var shouldDisplayFavorite = true
     
     private var recipesToDisplay: [Recipe] {
@@ -15,20 +17,21 @@ class RecipeListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundImageSetting(background: "Background_Ardoise")
+        messageIfNoFavorite()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableView.reloadData()
-        messageIfNoFavorite()
+        noRecipeLabel?.isHidden = !recipesToDisplay.isEmpty
+        //messageIfNoFavorite()
         
         
-        // noRecipeLabel.hidden = !recipesToDisplay.isEmpty
+        //noRecipeLabel.hidden = !recipesToDisplay.isEmpty
         
     }
-    
-    #warning("currently working on it")
-    func messageIfNoFavorite() {
+
+    private func messageIfNoFavorite() {
         let title = UILabel()
         title.text = "You have currently no favorite recipe"
         title.font = UIFont(name: "Marker felt", size: 20)
@@ -39,10 +42,12 @@ class RecipeListViewController: UITableViewController {
         self.view.addSubview(title)
         
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        #warning("must put the message more center above")
-        title.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        title.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+        title.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -100).isActive = true
         title.textAlignment = .center
+        title.isHidden = true
+        
+        noRecipeLabel = title
     }
     
     

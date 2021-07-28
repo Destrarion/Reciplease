@@ -25,7 +25,6 @@ class FridgeViewController: UIViewController {
         
     }
     
-    
     private func setupIngredientTableView() {
         ingredientsTableView.delegate = self
         ingredientsTableView.dataSource = self
@@ -51,11 +50,10 @@ class FridgeViewController: UIViewController {
         activityIndicator.startAnimating()
         searchButton.isHidden = true
         if fridgeService.ingredients == [] {
-            alertManager.presentAlert(on: self, error: .noIngredientInFridge)
+            alertManager.presentAlert(on: self, error: FridgeServiceError.noIngredientInFridge)
             searchRecipeProcessingEnd()
             return
-        }
-        if fridgeService.ingredients != [] {
+        } else {
             recipeService.getRecipes(ingredients: fridgeService.ingredients) { [weak self] (result) in
                 DispatchQueue.main.async {
                     switch result {

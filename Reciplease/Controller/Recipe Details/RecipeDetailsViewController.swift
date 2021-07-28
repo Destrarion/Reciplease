@@ -12,6 +12,11 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         getImage(recipe: recipe!)
         timerLabel.text = recipe?.formatCookingTimeToString()
         switchFavoriteButton(recipe: recipe!)
+    }
+    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         addGradient()
     }
     

@@ -15,7 +15,7 @@ protocol FridgeServiceDelegate: AnyObject {
 ///
 ///     * Emoji : due to the emoji (📑) or their translation in unicode (Unicode: U+1F4D1, UTF-8: F0 9F 93 91)
 ///     * Non Regular expression : due to URL and API not accepting other alphabetic than English ( example russian keyboard )
-enum FridgeServiceError: Error {
+enum FridgeServiceError: LocalizedError {
     /// If the user give an white space ingredient, return this error
     case failedToAddIngredientIsEmpty
     /// If the ingredient is already added into the fridge
