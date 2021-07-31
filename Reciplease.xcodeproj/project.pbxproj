@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F0703C826B5609600825BD6 /* RecipeServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0703C726B5609600825BD6 /* RecipeServiceError.swift */; };
+		5F0703CA26B5624D00825BD6 /* RecipeCoreDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0703C926B5624D00825BD6 /* RecipeCoreDataManagerMock.swift */; };
 		5F233ABD264DE69D00D8EE2B /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F233ABB264DE69D00D8EE2B /* Reciplease.xcdatamodeld */; };
 		5F2929DB2660C80C007BD69B /* RealBackendDecodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2929DA2660C80C007BD69B /* RealBackendDecodeTests.swift */; };
 		5F2AA441266A00160009E635 /* AlamofireNetworkManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2AA440266A00160009E635 /* AlamofireNetworkManagerMock.swift */; };
@@ -65,6 +67,8 @@
 
 /* Begin PBXFileReference section */
 		299F90440E316C94BE2CD3DE /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F0703C726B5609600825BD6 /* RecipeServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeServiceError.swift; sourceTree = "<group>"; };
+		5F0703C926B5624D00825BD6 /* RecipeCoreDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCoreDataManagerMock.swift; sourceTree = "<group>"; };
 		5F233ABC264DE69D00D8EE2B /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
 		5F2929DA2660C80C007BD69B /* RealBackendDecodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealBackendDecodeTests.swift; sourceTree = "<group>"; };
 		5F2AA440266A00160009E635 /* AlamofireNetworkManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkManagerMock.swift; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				5F3539EB261F95BD0073AFF2 /* RecipeService.swift */,
+				5F0703C726B5609600825BD6 /* RecipeServiceError.swift */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 				5F5050432669FB41008DD2F2 /* RecipeServiceTests.swift */,
 				5FC744E326733ABD0068727D /* RecipeUrlProviderMock.swift */,
 				5FD12EAE2679DF32005079B7 /* RecipeCoreDataManagerTests.swift */,
+				5F0703C926B5624D00825BD6 /* RecipeCoreDataManagerMock.swift */,
 			);
 			path = RecipleaseTests;
 			sourceTree = "<group>";
@@ -587,6 +593,7 @@
 				5FAB641D2616F09F0018D991 /* FridgeService.swift in Sources */,
 				5FFD771B25F2177800248FF7 /* RecipeDetailsViewController.swift in Sources */,
 				5F62E46C268B730E00B40FD1 /* HapticsManager.swift in Sources */,
+				5F0703C826B5609600825BD6 /* RecipeServiceError.swift in Sources */,
 				5F3539EC261F95BD0073AFF2 /* RecipeService.swift in Sources */,
 				5FFD76D325F2139B00248FF7 /* FridgeViewController.swift in Sources */,
 				5FAA5E42260D5E8000B42811 /* RecipeResponse.swift in Sources */,
@@ -605,6 +612,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F0703CA26B5624D00825BD6 /* RecipeCoreDataManagerMock.swift in Sources */,
 				5FAB64222616FB590018D991 /* FridgeServiceTests.swift in Sources */,
 				5F2AA441266A00160009E635 /* AlamofireNetworkManagerMock.swift in Sources */,
 				5F2929DB2660C80C007BD69B /* RealBackendDecodeTests.swift in Sources */,

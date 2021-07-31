@@ -53,6 +53,59 @@ class RecipeServiceTests: XCTestCase {
     }
     
     
+    func test_givenEmptyFavorites_whenToggleRecipeInFavorite_thenFavoriteCountRaiseToOne() {
+        let recipeCoreDataManagerMock = RecipeCoreDataManagerMock()
+        let recipeService = RecipeService(recipeCoreDataManager: recipeCoreDataManagerMock)
+        
+        
+        let recipe = Recipe(label: "Pizza", image: "", url: "", ingredientLines: [], ingredients: [], totalTime: 10)
+        
+        XCTAssertEqual(recipeService.favoritedRecipes.count, 0)
+        
+        recipeService.toggleRecipeToFavorite(recipe: recipe)
+        
+        XCTAssertEqual(recipeService.favoritedRecipes.count, 1)
+    }
+    
+    
+    func test_givenFavoritesContainingAlreadyTheRecipe_whenToggleRecipeInFavorite_thenFavoriteCountDecreaseToZero() {
+        let recipeCoreDataManagerMock = RecipeCoreDataManagerMock()
+        let recipeService = RecipeService(recipeCoreDataManager: recipeCoreDataManagerMock)
+        
+        
+        let recipe = Recipe(label: "Pizza", image: "", url: "", ingredientLines: [], ingredients: [], totalTime: 10)
+        
+        XCTAssertEqual(recipeService.favoritedRecipes.count, 0)
+        
+        recipeService.toggleRecipeToFavorite(recipe: recipe)
+        
+        XCTAssertEqual(recipeService.favoritedRecipes.count, 1)
+        
+        recipeService.toggleRecipeToFavorite(recipe: recipe)
+        
+        XCTAssertEqual(recipeService.favoritedRecipes.count, 0)
+    }
+    
+    
+    func test_givenRecipeInFavorite_whenGetIsRecipeAlreadyFavorited_thenGetTrue() {
+        let recipeCoreDataManagerMock = RecipeCoreDataManagerMock()
+        let recipeService = RecipeService(recipeCoreDataManager: recipeCoreDataManagerMock)
+        
+        
+        let recipe = Recipe(label: "Pizza", image: "", url: "", ingredientLines: [], ingredients: [], totalTime: 10)
+        
+        
+        recipeService.toggleRecipeToFavorite(recipe: recipe)
+
+        let isRecipeAlreadyFavorited = recipeService.isRecipeAlreadyFavorited(recipe: recipe)
+        
+        XCTAssertTrue(isRecipeAlreadyFavorited)
+    }
+    
+    
+    
+    
+    
     func test_success() {
         let networkManagerMock = AlamofireNetworkManagerSuccessMock()
         let recipeService = RecipeService(networkManager: networkManagerMock)
