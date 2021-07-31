@@ -16,7 +16,7 @@ class RecipleaseTabBarController: UITabBarController {
         
         for item in items {
             
-            let font = UIFont.systemFont(ofSize: 20)
+            guard let font = UIFont(name: "Marker felt", size: 20) else { return }
             
             let textAttributes: [NSAttributedString.Key : Any] = [
                 .font : font

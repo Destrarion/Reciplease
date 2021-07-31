@@ -6,7 +6,10 @@ import Foundation
 /// - Failed to get recipe Image: if the image could not be received from the API.
 enum RecipeServiceError: LocalizedError {
     /// If the device couldn't get any recipe, due to device not connected to internet or other forms.
-    case failedToGetRecipes
+    case failedToGetRecipesRequestFailure
+    /// If the device couldn't get any recipe, due to device not connected to internet or other forms.
+    case failedToGetRecipesEmptyHits
+    
     /// If the RecipeUrlProvider or the url of the image failed to be created.
     case couldNotCreateURL
     /// If the image could not be received from the API.
@@ -19,7 +22,8 @@ enum RecipeServiceError: LocalizedError {
         switch self {
         case .couldNotCreateURL: return "Could not create url"
         case .failedToGetRecipeImage: return "Failed to get recipe image"
-        case .failedToGetRecipes: return "Failed to get recipes"
+        case .failedToGetRecipesRequestFailure: return "Failed to get recipes - Request failed"
+        case .failedToGetRecipesEmptyHits: return "Failed to recipes - No corresponding hits"
         case .internetNotReachable: return " You are currently not connected to internet"
         }
     }
@@ -74,13 +78,13 @@ class RecipeService {
             networkManager.fetch(url: requestURL) { (result: Result<RecipeResponse, NetworkManagerError>) in
                 switch result {
                 case .failure:
-                    callback(.failure(.failedToGetRecipes))
+                    callback(.failure(.failedToGetRecipesRequestFailure))
                     return
                 case .success(let response):
                     let recipes = response.hits.map { $0.recipe }
                     
                     guard !recipes.isEmpty else {
-                        callback(.failure(.failedToGetRecipes))
+                        callback(.failure(.failedToGetRecipesEmptyHits))
                         return
                     }
                     

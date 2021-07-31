@@ -4,7 +4,7 @@ import Alamofire
 protocol NetworkManagerProtocol {
     func fetch<T: Decodable>(url: URL, callback: @escaping (Result<T, NetworkManagerError>) -> Void)
     func fetchData(url: URL, callback: @escaping (Result<Data, NetworkManagerError>) -> Void)
-    func isConnectedToInternet() ->Bool
+    func isConnectedToInternet() -> Bool
 }
 
 class AlamofireNetworkManager: NetworkManagerProtocol {

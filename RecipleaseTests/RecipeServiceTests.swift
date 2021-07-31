@@ -12,21 +12,46 @@ import XCTest
 class RecipeServiceTests: XCTestCase {
     
 
-    func test_failure() {
+    func test_givenNoInternetConnection_whenGetRecipes_thenGetInternetIsNotReachableError() {
         let networkManagerMock = AlamofireNetworkManagerFailureMock()
         let recipeService = RecipeService(networkManager: networkManagerMock)
 
 
         recipeService.getRecipes(ingredients: ["beef"]) { result in
             switch result {
-            case .failure(let error): XCTAssertEqual(error, .failedToGetRecipes)
+            case .failure(let error): XCTAssertEqual(error, .internetNotReachable)
             case .success: XCTFail()
             }
         }
-
-
-
     }
+    
+    
+    func test_givenInternetConnectionAndPositiveUrlCreationButFailureNetworkManager_whenGetRecipes_thenGetFailedToGetRecipes() {
+        let networkManagerMock = AlamofireNetworkManagerWorkingConnectionButFailureFetchMock()
+        let recipeService = RecipeService(networkManager: networkManagerMock)
+
+
+        recipeService.getRecipes(ingredients: ["beef"]) { result in
+            switch result {
+            case .failure(let error): XCTAssertEqual(error, .failedToGetRecipesRequestFailure)
+            case .success: XCTFail()
+            }
+        }
+    }
+    
+    func test_givenInternetConnectionAndPositiveUrlCreationAndSuccessfullRequestButEmptyRecipesNetworkManager_whenGetRecipes_thenGetFailedToGetRecipesEmptyHits() {
+        let networkManagerMock = AlamofireNetworkManagerWorkingConnectionAndEmptyFetchRecipesMock()
+        let recipeService = RecipeService(networkManager: networkManagerMock)
+
+
+        recipeService.getRecipes(ingredients: ["beef"]) { result in
+            switch result {
+            case .failure(let error): XCTAssertEqual(error, .failedToGetRecipesEmptyHits)
+            case .success: XCTFail()
+            }
+        }
+    }
+    
     
     func test_success() {
         let networkManagerMock = AlamofireNetworkManagerSuccessMock()
