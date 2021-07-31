@@ -1,5 +1,4 @@
 #warning("Need Documentation")
-#warning("title on image need an gradient")
 import UIKit
 import SafariServices
 

@@ -5,6 +5,7 @@ import Foundation
 
 
 
+/// <#Description#>
 class AlamofireNetworkManagerSuccessMock: NetworkManagerProtocol {
     func fetch<T>(url: URL, callback: @escaping (Result<T, NetworkManagerError>) -> Void) where T : Decodable {
         let recipeResponse = RecipeResponse( hits: [
@@ -25,7 +26,9 @@ class AlamofireNetworkManagerSuccessMock: NetworkManagerProtocol {
         callback(.success(Data()))
     }
     
-    
+    func isConnectedToInternet()-> Bool {
+            return true
+    }
 }
 
 
@@ -38,5 +41,7 @@ class AlamofireNetworkManagerFailureMock: NetworkManagerProtocol {
         callback(.failure(.noData))
     }
     
-    
+    func isConnectedToInternet()-> Bool {
+            return false
+    }
 }

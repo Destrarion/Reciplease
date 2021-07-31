@@ -1,6 +1,7 @@
 import Foundation
 import CoreData
 
+#warning("check test")
 protocol RecipeCoreDataManagerProtocol {
     func addRecipe(recipe: Recipe)
     func getRecipes() -> [Recipe]

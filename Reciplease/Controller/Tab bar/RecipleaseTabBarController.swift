@@ -1,7 +1,7 @@
 import Foundation
 #warning("need documentation")
 import UIKit
-
+#warning("Not responsive for iphone 8, Item text too low compared to Iphone 12 (vient du bouton home")
 class RecipleaseTabBarController: UITabBarController {
     
     override func viewDidLoad() {

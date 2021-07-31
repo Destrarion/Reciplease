@@ -2,7 +2,6 @@ import UIKit
 
 /// Class creating Popup if an error happen. Create Popup with the error description that happened.
 class AlertViewManager {
-    #warning("can't i use extension of Error and group up all error i got in there, so i can just use Error for presentAlert ?")
     func presentAlert(on viewController: UIViewController?, error: LocalizedError) {
         guard let viewController = viewController else { return }
         
