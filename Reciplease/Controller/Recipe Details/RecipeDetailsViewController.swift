@@ -12,14 +12,6 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         switchFavoriteButton(recipe: recipe!)
     }
     
-    
-    /// viewDidLayoutSubviews is called after the view is loaded.
-    /// The gradient is added after the view is loaded to fit the exact size of the view.
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        addGradient()
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         switchFavoriteButton(recipe: recipe!)
@@ -93,21 +85,7 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    /// Function for adding the gradient on the Gradient view between the image of the recipe and the title of the recipe.
-    func addGradient() {
-        gradientView.layer.sublayers?.removeAll()
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = gradientView.frame
-        
-        let bottomColor = UIColor.black.withAlphaComponent(0.8).cgColor
-        
-        gradientLayer.colors = [UIColor.clear.cgColor, bottomColor]
-        gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
 
-        gradientView.layer.addSublayer(gradientLayer)
-    }
     
     /// Function for filling the star in white if the recipe is on favorite.
     /// If not in favorite, set the inside of the star transparent.
