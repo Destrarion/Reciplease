@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F02988C26B83E390024A626 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F02988B26B83E390024A626 /* ShadowView.swift */; };
 		5F0703C826B5609600825BD6 /* RecipeServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0703C726B5609600825BD6 /* RecipeServiceError.swift */; };
 		5F0703CA26B5624D00825BD6 /* RecipeCoreDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0703C926B5624D00825BD6 /* RecipeCoreDataManagerMock.swift */; };
 		5F233ABD264DE69D00D8EE2B /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F233ABB264DE69D00D8EE2B /* Reciplease.xcdatamodeld */; };
@@ -67,6 +68,7 @@
 
 /* Begin PBXFileReference section */
 		299F90440E316C94BE2CD3DE /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F02988B26B83E390024A626 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		5F0703C726B5609600825BD6 /* RecipeServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeServiceError.swift; sourceTree = "<group>"; };
 		5F0703C926B5624D00825BD6 /* RecipeCoreDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCoreDataManagerMock.swift; sourceTree = "<group>"; };
 		5F233ABC264DE69D00D8EE2B /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				5FFD771525F2171D00248FF7 /* RecipeListViewController.swift */,
 				5FB7763C2604C28D00CDA1FB /* RecipeTableViewCell.swift */,
+				5F02988B26B83E390024A626 /* ShadowView.swift */,
 			);
 			path = "Recipe List";
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				5F0703C826B5609600825BD6 /* RecipeServiceError.swift in Sources */,
 				5F3539EC261F95BD0073AFF2 /* RecipeService.swift in Sources */,
 				5FFD76D325F2139B00248FF7 /* FridgeViewController.swift in Sources */,
+				5F02988C26B83E390024A626 /* ShadowView.swift in Sources */,
 				5FAA5E42260D5E8000B42811 /* RecipeResponse.swift in Sources */,
 				5FB776382604BC1B00CDA1FB /* RecipleaseTabBarController.swift in Sources */,
 				5FFD76CF25F2139B00248FF7 /* AppDelegate.swift in Sources */,

@@ -1,7 +1,5 @@
 import UIKit
 
-#warning("Need Documentation")
-
 class FridgeViewController: UIViewController {
     
     private let fridgeService = FridgeService()
@@ -12,6 +10,7 @@ class FridgeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupIngredientTableView()
+        setPlaceholderColor()
         fridgeService.delegate = self
         addIngredientTextField.delegate = self
         
@@ -50,19 +49,19 @@ class FridgeViewController: UIViewController {
         activityIndicator.startAnimating()
         searchButton.isHidden = true
         if fridgeService.ingredients == [] {
-            alertManager.presentAlert(on: self, error: FridgeServiceError.noIngredientInFridge)
-            searchRecipeProcessingEnd()
+            alertManager.presentAlert(on: self, errorMessage: FridgeServiceError.noIngredientInFridge.errorDescription)
+            searchingRecipeProcessingEnd()
             return
         } else {
             recipeService.getRecipes(ingredients: fridgeService.ingredients) { [weak self] (result) in
                 DispatchQueue.main.async {
                     switch result {
                     case .failure(let error):
-                        self?.alertManager.presentAlert(on: self, error: error)
+                        self?.alertManager.presentAlert(on: self, errorMessage: error.errorDescription)
                     case .success:
                         self?.performSegue(withIdentifier: "GoToRecipeListSegue", sender: nil)
                     }
-                    self?.searchRecipeProcessingEnd()
+                    self?.searchingRecipeProcessingEnd()
                 }
             }
         }
@@ -84,18 +83,30 @@ class FridgeViewController: UIViewController {
         
     }
     
-    #warning("need a new name")
-    func searchRecipeProcessingEnd(){
+    /// Function for setting the placeholder in the UITextfield for avoiding transparent placeholder when the Iphone dispaly appareance is set on Dark mode
+    func setPlaceholderColor() {
+        let placeholder = addIngredientTextField.placeholder ?? ""
+        let placeholderAttributedString = NSMutableAttributedString(string: placeholder)
+        let range = (placeholder as NSString).range(of: placeholder)
+        let foregroundColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 1.0)
+        placeholderAttributedString.addAttribute(.foregroundColor, value: foregroundColor, range: range)
+        
+        addIngredientTextField.attributedPlaceholder = placeholderAttributedString
+    }
+    
+    /// Function for stopping the activity indicator from animating and the search button to reappear.
+    func searchingRecipeProcessingEnd(){
         searchButton.isHidden = false
         activityIndicator.stopAnimating()
     }
     
+    /// Function for adding ingredient into the fridge.
     private func addIngredient() {
         guard let ingredient = addIngredientTextField.text else { return }
         
         switch fridgeService.add(ingredient: ingredient) {
         case .failure(let error):
-            alertManager.presentAlert(on: self, error: error)
+            alertManager.presentAlert(on: self, errorMessage: error.errorDescription)
         case .success:
             addIngredientTextField.text = ""
         }

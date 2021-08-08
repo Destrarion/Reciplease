@@ -1,4 +1,3 @@
-#warning("Need Documentation")
 import UIKit
 import SafariServices
 
@@ -14,6 +13,8 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
     }
     
     
+    /// viewDidLayoutSubviews is called after the view is loaded.
+    /// The gradient is added after the view is loaded to fit the exact size of the view.
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         addGradient()
@@ -23,6 +24,11 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         super.viewDidAppear(animated)
         switchFavoriteButton(recipe: recipe!)
     }
+    
+    /// Function to modifie the TableView of the list of ingredient.
+    #warning("delegate is assigned to what before assigned to self ? to the storybard before the code?")
+    /// The delegate of TableView
+    /// The dataSource for taking the information necessary to describe the ingredient of the recipe
     private func setupIngredientTableView() {
         ingredientsTableView.delegate = self
         ingredientsTableView.dataSource = self
@@ -36,8 +42,8 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
     
-    
-    @IBAction func didTapOnOpenInstructionButton() {
+    /// Action after pressing Get Direction, calling this fuction to open the url of the recipe on Safari Controller for more details on teh website.
+    @IBAction func didTapOnGetDirectionButton() {
         guard let recipeUrlString = recipe?.url,
               let recipeUrl = URL(string: recipeUrlString)
         else { return }
@@ -60,8 +66,10 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
     private var recipeService = RecipeService.shared
     private var alertManager = AlertViewManager()
     
+    #warning("what was that for if we create a let of CAGradient layer already in addGradient function ?")
     private var gradientLayer: CAGradientLayer?
     
+    /// Function to get the image of the recipe.
     func getImage(recipe: Recipe) {
         activityIndicator.startAnimating()
         recipeService.getImageRecipe(
@@ -85,11 +93,11 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         }
     }
     
+    /// Function for adding the gradient on the Gradient view between the image of the recipe and the title of the recipe.
     func addGradient() {
         gradientView.layer.sublayers?.removeAll()
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = gradientView.frame
-        
         
         let bottomColor = UIColor.black.withAlphaComponent(0.8).cgColor
         
@@ -101,6 +109,8 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         gradientView.layer.addSublayer(gradientLayer)
     }
     
+    /// Function for filling the star in white if the recipe is on favorite.
+    /// If not in favorite, set the inside of the star transparent.
     func switchFavoriteButton(recipe : Recipe) {
         if recipeService.isRecipeAlreadyFavorited(recipe: recipe){
             favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)

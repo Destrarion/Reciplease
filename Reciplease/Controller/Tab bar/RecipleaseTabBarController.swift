@@ -1,21 +1,20 @@
 import Foundation
-#warning("need documentation")
 import UIKit
-#warning("Not responsive for iphone 8, Item text too low compared to Iphone 12 (vient du bouton home")
 class RecipleaseTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // tabBar.backgroundImage = UIImage()
         configureItems()
     }
     
+    /// function for configuring the item in the Tab Bar Controller
     private func configureItems() {
         guard let items = tabBar.items else { return }
         
         for item in items {
             
+            /// Constant for the font of the items
             guard let font = UIFont(name: "Marker felt", size: 20) else { return }
             
             let textAttributes: [NSAttributedString.Key : Any] = [
@@ -24,9 +23,10 @@ class RecipleaseTabBarController: UITabBarController {
             
             item.setTitleTextAttributes(textAttributes, for: .normal)
             
+            /// Color of the items when the item is  not selected
             tabBar.unselectedItemTintColor = .lightGray
             
-            
+            #warning("why reapplying the font ?")
             let selectedTextAttributes: [NSAttributedString.Key : Any] = [
                 .font : font,
                 .foregroundColor: UIColor.white

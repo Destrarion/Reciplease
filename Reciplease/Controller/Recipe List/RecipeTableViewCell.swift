@@ -1,6 +1,5 @@
 #warning("Need Documentation")
 
-
 extension Array where Element: Hashable {
     func removingDuplicates() -> [Element] {
         var addedDict = [Element: Bool]()
@@ -32,7 +31,6 @@ class RecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var recipeService = RecipeService.shared
-    private var gradientLayer: CAGradientLayer?
 
     
     private var lastLoadedRecipe: Recipe?
@@ -51,29 +49,9 @@ class RecipeTableViewCell: UITableViewCell {
                 .joined(separator: ", ")
         
         ingredientRecipeLabel.text = recipeIngredientsSubtitle
-        addGradient()
-        
     }
     
-    func addGradient() {
-        shadowView.layer.sublayers?.removeAll()
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = shadowView.frame
-        
-        
-        let bottomColor = UIColor.black.withAlphaComponent(0.8).cgColor
-        
-        gradientLayer.colors = [UIColor.clear.cgColor, bottomColor]
-        gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
-
-        shadowView.layer.addSublayer(gradientLayer)
-    }
-    
-    
-    #warning("move somewhere else")
-    func getImage(recipe: Recipe) {
+    private func getImage(recipe: Recipe) {
         activityIndicator.startAnimating()
         recipeService.getImageRecipe(
             recipe: recipe

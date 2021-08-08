@@ -38,13 +38,13 @@ class RecipeCoreDataManager: RecipeCoreDataManagerProtocol {
         
         let recipes = recipeEntities.map { recipeEntity in
             Recipe(
-                label: recipeEntity.title,
-                image: recipeEntity.imageURL,
-                url: recipeEntity.instructionUrl,
-                ingredientLines: recipeEntity.ingredientLines,
-                ingredients: recipeEntity.foodCategories.map { foodCategory in
+                label: recipeEntity.title ?? "",
+                image: recipeEntity.imageURL ?? "",
+                url: recipeEntity.instructionUrl ?? "",
+                ingredientLines: recipeEntity.ingredientLines ?? [""],
+                ingredients: recipeEntity.foodCategories?.map { foodCategory in
                     Ingredient(foodCategory: foodCategory)
-                },
+                } ?? [],
                 totalTime: recipeEntity.totalTime
             )
         }
