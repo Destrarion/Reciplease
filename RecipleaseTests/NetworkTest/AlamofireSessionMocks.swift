@@ -1,19 +1,9 @@
-//
-//  AlamofireSessionMocks.swift
-//  RecipleaseTests
-//
-//  Created by Fabien Dietrich on 04/06/2021.
-//
-
 import Foundation
 import Alamofire
 @testable import Reciplease
 
-
 class AlamofireSessionFailureMock: AlamofireSessionProtocol {
     func fetchDecodable<T: Decodable>(url: URL, completion: @escaping (DataResponse<T, AFError>) -> Void) {
-        
-        //let recipeResponser = RecipeResponse(q: "", from: 0, to: 10, more: true, count: 5, hits: [])
         
         let dataResponse = DataResponse(
             request: nil,
@@ -27,7 +17,6 @@ class AlamofireSessionFailureMock: AlamofireSessionProtocol {
         completion(dataResponse)
     }
     
-    
     func fetchJsonData(url: URL, completion: @escaping (DataResponse<Any, AFError>) -> Void) {
         
         let dataResponse = DataResponse(
@@ -38,12 +27,9 @@ class AlamofireSessionFailureMock: AlamofireSessionProtocol {
             serializationDuration: 0.5,
             result: Result<Any, AFError>.failure(AFError.explicitlyCancelled)
         )
-        
         completion(dataResponse)
     }
 }
-
-
 
 class AlamofireSessionSuccessMock: AlamofireSessionProtocol {
     func fetchDecodable<T: Decodable>(url: URL, completion: @escaping (DataResponse<T, AFError>) -> Void) {
@@ -58,7 +44,6 @@ class AlamofireSessionSuccessMock: AlamofireSessionProtocol {
                 totalTime: 0
             )
         )])
-
         
         let dataResponse = DataResponse(
             request: nil,
@@ -68,10 +53,8 @@ class AlamofireSessionSuccessMock: AlamofireSessionProtocol {
             serializationDuration: 0.5,
             result: Result<T, AFError>.success(recipeResponse as! T)
         )
-        
         completion(dataResponse)
     }
-    
     
     func fetchJsonData(url: URL, completion: @escaping (DataResponse<Any, AFError>) -> Void) {
         
@@ -83,7 +66,6 @@ class AlamofireSessionSuccessMock: AlamofireSessionProtocol {
             serializationDuration: 0.5,
             result: Result<Any, AFError>.success(Data())
         )
-        
         completion(dataResponse)
     }
 }

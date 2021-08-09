@@ -6,20 +6,21 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupIngredientTableView()
-        titleRecipeLabel.text = recipe?.label
-        getImage(recipe: recipe!)
-        timerLabel.text = recipe?.formatCookingTimeToString()
-        switchFavoriteButton(recipe: recipe!)
+        
+        guard let recipe = recipe else { return }
+        titleRecipeLabel.text = recipe.label
+        getImage(recipe: recipe)
+        timerLabel.text = recipe.formatCookingTimeToString()
+        switchFavoriteButton(recipe: recipe)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        switchFavoriteButton(recipe: recipe!)
+        guard let recipe = recipe else { return }
+        switchFavoriteButton(recipe: recipe)
     }
     
     /// Function to modifie the TableView of the list of ingredient.
-    #warning("delegate is assigned to what before assigned to self ? to the storybard before the code?")
-    /// The delegate of TableView
     /// The dataSource for taking the information necessary to describe the ingredient of the recipe
     private func setupIngredientTableView() {
         ingredientsTableView.delegate = self
@@ -53,13 +54,10 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         
     }
     
-    
     var recipe: Recipe?
     private var recipeService = RecipeService.shared
     private var alertManager = AlertViewManager()
     
-    #warning("what was that for if we create a let of CAGradient layer already in addGradient function ?")
-    private var gradientLayer: CAGradientLayer?
     
     /// Function to get the image of the recipe.
     func getImage(recipe: Recipe) {
@@ -85,8 +83,6 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-
-    
     /// Function for filling the star in white if the recipe is on favorite.
     /// If not in favorite, set the inside of the star transparent.
     func switchFavoriteButton(recipe : Recipe) {
@@ -96,6 +92,7 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
             favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
         }
     }
+    
 }
 
 

@@ -1,10 +1,3 @@
-//
-//  RecipeCoreDataManagerTests.swift
-//  RecipleaseTests
-//
-//  Created by Fabien Dietrich on 16/06/2021.
-//
-
 import XCTest
 @testable import Reciplease
 

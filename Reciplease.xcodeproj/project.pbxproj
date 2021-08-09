@@ -11,7 +11,6 @@
 		5F0703C826B5609600825BD6 /* RecipeServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0703C726B5609600825BD6 /* RecipeServiceError.swift */; };
 		5F0703CA26B5624D00825BD6 /* RecipeCoreDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0703C926B5624D00825BD6 /* RecipeCoreDataManagerMock.swift */; };
 		5F233ABD264DE69D00D8EE2B /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F233ABB264DE69D00D8EE2B /* Reciplease.xcdatamodeld */; };
-		5F2929DB2660C80C007BD69B /* RealBackendDecodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2929DA2660C80C007BD69B /* RealBackendDecodeTests.swift */; };
 		5F2AA441266A00160009E635 /* AlamofireNetworkManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2AA440266A00160009E635 /* AlamofireNetworkManagerMock.swift */; };
 		5F3539EC261F95BD0073AFF2 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3539EB261F95BD0073AFF2 /* RecipeService.swift */; };
 		5F3539F7261FAB9D0073AFF2 /* AlertViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3539F6261FAB9D0073AFF2 /* AlertViewManager.swift */; };
@@ -72,7 +71,6 @@
 		5F0703C726B5609600825BD6 /* RecipeServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeServiceError.swift; sourceTree = "<group>"; };
 		5F0703C926B5624D00825BD6 /* RecipeCoreDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCoreDataManagerMock.swift; sourceTree = "<group>"; };
 		5F233ABC264DE69D00D8EE2B /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
-		5F2929DA2660C80C007BD69B /* RealBackendDecodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealBackendDecodeTests.swift; sourceTree = "<group>"; };
 		5F2AA440266A00160009E635 /* AlamofireNetworkManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkManagerMock.swift; sourceTree = "<group>"; };
 		5F3539EB261F95BD0073AFF2 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
 		5F3539F6261FAB9D0073AFF2 /* AlertViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewManager.swift; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 		5F72BF39266097CD006608E5 /* NetworkTest */ = {
 			isa = PBXGroup;
 			children = (
-				5F2929DA2660C80C007BD69B /* RealBackendDecodeTests.swift */,
 				5FFD76E825F2139C00248FF7 /* UrlTests.swift */,
 				5F72BF3326609467006608E5 /* NetworkTest.swift */,
 				5F5050472669FC33008DD2F2 /* AlamofireSessionMocks.swift */,
@@ -619,7 +616,6 @@
 				5F0703CA26B5624D00825BD6 /* RecipeCoreDataManagerMock.swift in Sources */,
 				5FAB64222616FB590018D991 /* FridgeServiceTests.swift in Sources */,
 				5F2AA441266A00160009E635 /* AlamofireNetworkManagerMock.swift in Sources */,
-				5F2929DB2660C80C007BD69B /* RealBackendDecodeTests.swift in Sources */,
 				5F5050482669FC33008DD2F2 /* AlamofireSessionMocks.swift in Sources */,
 				5F72BF3426609467006608E5 /* NetworkTest.swift in Sources */,
 				5F62E46A268B724B00B40FD1 /* RecipeCoreDataManagerTests.swift in Sources */,

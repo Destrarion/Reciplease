@@ -65,8 +65,6 @@ class FridgeServiceTests: XCTestCase {
         }
     }
     
-    
-    
     // MARK: Already added ingredient
     
     func test_givenAlreadyAddedIngredient_whenAddIngredient_thenGetIngredientIsAlreadyAddedFAilure() {
@@ -115,7 +113,6 @@ class FridgeServiceTests: XCTestCase {
         }
         
     }
-    
     
     // MARK: Special character
     

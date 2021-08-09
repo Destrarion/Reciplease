@@ -25,10 +25,10 @@ enum FridgeServiceError: LocalizedError {
     /// * Non Regular expression : due to URL and API not accepting other alphabetic than English ( example russian keyboard )
     case failedToAddIngredientContainsSpecialCharacter
     /// if the ingredient in Fridge is empty,
+    ///
     /// Error Description:
     /// ---
     /// " There is no ingredient added in the Fridge. Add Ingredient in Fridge to search new recipe"
-    ///
     case noIngredientInFridge
     
     var errorDescription: String {

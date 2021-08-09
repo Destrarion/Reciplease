@@ -16,12 +16,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        // Save changes in the application's managed object context when the application transitions to the background.
-        CoreDataContextProvider.shared.saveContext()
-    }
-
-
 }
 

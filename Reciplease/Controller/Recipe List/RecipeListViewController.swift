@@ -24,13 +24,8 @@ class RecipeListViewController: UITableViewController {
         super.viewDidAppear(animated)
         tableView.reloadData()
         noRecipeLabel?.isHidden = !recipesToDisplay.isEmpty
-        //messageIfNoFavorite()
-        
-        
-        //noRecipeLabel.hidden = !recipesToDisplay.isEmpty
-        
     }
-
+    
     private func messageIfNoFavorite() {
         let title = UILabel()
         title.text = "You have currently no favorite recipe"
@@ -50,15 +45,12 @@ class RecipeListViewController: UITableViewController {
         noRecipeLabel = title
     }
     
-    
-    
     func backgroundImageSetting(background image: String){
         let ardoiseImage = UIImage(named: image)
         let ardoiseImageView = UIImageView(image: ardoiseImage)
         ardoiseImageView.contentMode = .scaleAspectFill
         tableView.backgroundView = ardoiseImageView
     }
-    
     
     var alertManager = AlertViewManager()
     private var recipeService = RecipeService.shared
@@ -72,10 +64,7 @@ class RecipeListViewController: UITableViewController {
         {
             destination.recipe = recipe
         }
-        
     }
-    
-    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         recipesToDisplay.count
@@ -92,9 +81,6 @@ class RecipeListViewController: UITableViewController {
         
         return cell
     }
-    
-    
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let recipe = recipesToDisplay[indexPath.row]

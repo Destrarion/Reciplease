@@ -1,10 +1,3 @@
-//
-//  RecipleaseUITests.swift
-//  RecipleaseUITests
-//
-//  Created by Fabien Dietrich on 05/03/2021.
-//
-
 import XCTest
 
 class RecipleaseUITests: XCTestCase {

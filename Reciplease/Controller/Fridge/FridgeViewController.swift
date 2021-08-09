@@ -114,8 +114,6 @@ class FridgeViewController: UIViewController {
     
 }
 
-
-
 extension FridgeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

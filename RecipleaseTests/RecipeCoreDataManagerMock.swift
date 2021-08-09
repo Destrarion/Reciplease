@@ -1,10 +1,3 @@
-//
-//  RecipeCoreDataManagerMock.swift
-//  RecipleaseTests
-//
-//  Created by Fabien Dietrich on 31/07/2021.
-//
-
 import Foundation
 @testable import Reciplease
 

@@ -5,7 +5,7 @@ import XCTest
 class NetworkTest : XCTestCase {
     
     
-    func test_failure() {
+    func test_givenAlamofireSessionFailureMock_WhenFetch_thenErrorFailedtoDecodeJsonToCodableStruct() {
         let alamaofireSession = AlamofireSessionFailureMock()
         let networkManager = AlamofireNetworkManager(alamofireSession: alamaofireSession)
         

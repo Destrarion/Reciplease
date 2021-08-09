@@ -1,11 +1,6 @@
-#warning("Need Documentation")
-
 import Foundation
 @testable import Reciplease
 
-
-
-/// <#Description#>
 class AlamofireNetworkManagerSuccessMock: NetworkManagerProtocol {
     func fetch<T>(url: URL, callback: @escaping (Result<T, NetworkManagerError>) -> Void) where T : Decodable {
         let recipeResponse = RecipeResponse( hits: [

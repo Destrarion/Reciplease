@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+
 class RecipleaseTabBarController: UITabBarController {
     
     override func viewDidLoad() {
@@ -26,9 +27,7 @@ class RecipleaseTabBarController: UITabBarController {
             /// Color of the items when the item is  not selected
             tabBar.unselectedItemTintColor = .lightGray
             
-            #warning("why reapplying the font ?")
             let selectedTextAttributes: [NSAttributedString.Key : Any] = [
-                .font : font,
                 .foregroundColor: UIColor.white
             ]
             

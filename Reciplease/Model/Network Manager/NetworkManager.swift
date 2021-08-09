@@ -54,6 +54,8 @@ class AlamofireNetworkManager: NetworkManagerProtocol {
         }
     }
     
+    /// Function returning boolean if the device is connected to internet
+    /// - Returns: True if device connected to internet. False if not connected to internet
     func isConnectedToInternet()-> Bool {
             return NetworkReachabilityManager()!.isReachable
     }

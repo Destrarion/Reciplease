@@ -1,5 +1,3 @@
-
-
 import UIKit
 
 /// Class to customise cell for Fridge for the TableView showing the ingredients.
