@@ -3,30 +3,7 @@ import SafariServices
 
 class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupIngredientTableView()
-        
-        guard let recipe = recipe else { return }
-        titleRecipeLabel.text = recipe.label
-        getImage(recipe: recipe)
-        timerLabel.text = recipe.formatCookingTimeToString()
-        switchFavoriteButton(recipe: recipe)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        guard let recipe = recipe else { return }
-        switchFavoriteButton(recipe: recipe)
-    }
-    
-    /// Function to modifie the TableView of the list of ingredient.
-    /// The dataSource for taking the information necessary to describe the ingredient of the recipe
-    private func setupIngredientTableView() {
-        ingredientsTableView.delegate = self
-        ingredientsTableView.dataSource = self
-    }
-    
+    //MARK: - Outlets
     @IBOutlet private weak var ingredientsTableView: UITableView!
     @IBOutlet private weak var titleRecipeLabel: UILabel!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
@@ -35,6 +12,7 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
     @IBOutlet private weak var favoriteButton: UIButton!
     @IBOutlet private weak var timerLabel: UILabel!
     
+    //MARK: - IBAction
     /// Action after pressing Get Direction, calling this fuction to open the url of the recipe on Safari Controller for more details on teh website.
     @IBAction func didTapOnGetDirectionButton() {
         guard let recipeUrlString = recipe?.url,
@@ -54,10 +32,51 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         
     }
     
+    //MARK: - INTERNAL
+    
+    //MARK: Internal - Properties
     var recipe: Recipe?
+    
+    //MARK: Internal - Methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupIngredientTableView()
+        
+        guard let recipe = recipe else { return }
+        titleRecipeLabel.text = recipe.label
+        getImage(recipe: recipe)
+        timerLabel.text = recipe.formatCookingTimeToString()
+        switchFavoriteButton(recipe: recipe)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard let recipe = recipe else { return }
+        switchFavoriteButton(recipe: recipe)
+    }
+    
+    /// Function for filling the star in white if the recipe is on favorite.
+    /// If not in favorite, set the inside of the star transparent.
+    func switchFavoriteButton(recipe : Recipe) {
+        if recipeService.isRecipeAlreadyFavorited(recipe: recipe){
+            favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        } else {
+            favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+        }
+    }
+    
+    //MARK: - PRIVATE
+    
+    //MARK: Private - Properties
+    
+    
     private var recipeService = RecipeService.shared
     private var alertManager = AlertViewManager()
     
+    
+    
+    //MARK: Private - Methods
     
     /// Function to get the image of the recipe.
     private func getImage(recipe: Recipe) {
@@ -83,20 +102,16 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    /// Function for filling the star in white if the recipe is on favorite.
-    /// If not in favorite, set the inside of the star transparent.
-    func switchFavoriteButton(recipe : Recipe) {
-        if recipeService.isRecipeAlreadyFavorited(recipe: recipe){
-            favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
-        } else {
-            favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
-        }
+    /// Function to modifie the TableView of the list of ingredient.
+    /// The dataSource for taking the information necessary to describe the ingredient of the recipe
+    private func setupIngredientTableView() {
+        ingredientsTableView.delegate = self
+        ingredientsTableView.dataSource = self
     }
-    
 }
 
 
-
+//MARK: -
 extension RecipeDetailsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

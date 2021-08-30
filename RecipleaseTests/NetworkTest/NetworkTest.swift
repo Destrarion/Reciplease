@@ -65,4 +65,31 @@ class NetworkTest : XCTestCase {
             }
         }
     }
+    
+    
+    func test_giv() {
+
+        let networkReachibilityMock = NetworkReachabilityManagerAlamofireMock(isReachable: true)
+        let networkManager = AlamofireNetworkManager(networkReachabilityManager: networkReachibilityMock)
+        
+        XCTAssertTrue(networkManager.isConnectedToInternet())
+        
+    }
+    
+    func test_give() {
+
+        let networkReachibilityMock = NetworkReachabilityManagerAlamofireMock(isReachable: false)
+        let networkManager = AlamofireNetworkManager(networkReachabilityManager: networkReachibilityMock)
+        
+        XCTAssertFalse(networkManager.isConnectedToInternet())
+        
+    }
+    
+    func test_giveeeee() {
+
+        let networkManager = AlamofireNetworkManager(networkReachabilityManager: nil)
+        
+        XCTAssertFalse(networkManager.isConnectedToInternet())
+        
+    }
 }

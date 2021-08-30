@@ -12,8 +12,12 @@ class AlamofireNetworkManager: NetworkManagerProtocol {
     // MARK: - INTERNAL
     // MARK: Internal - Methods
     
-    init(alamofireSession: AlamofireSessionProtocol = AlamofireSession()) {
+    init(
+        alamofireSession: AlamofireSessionProtocol = AlamofireSession(),
+        networkReachabilityManager: NetworkReachabilityManagerAlamofireProtocol? = NetworkReachabilityManager()
+    ) {
         self.alamofireSession = alamofireSession
+        self.networkReachabilityManager = networkReachabilityManager
     }
     
     /// Function for getting recipe from the API of edaman with the ingredients in the Fridge.
@@ -58,7 +62,7 @@ class AlamofireNetworkManager: NetworkManagerProtocol {
     /// Function returning boolean if the device is connected to internet
     /// - Returns: True if device connected to internet. False if not connected to internet
     func isConnectedToInternet() -> Bool {
-        return NetworkReachabilityManager()?.isReachable ?? false
+        return networkReachabilityManager?.isReachable ?? false
     }
     
     
@@ -69,5 +73,23 @@ class AlamofireNetworkManager: NetworkManagerProtocol {
     // MARK: Private - Properties
     
     private let alamofireSession: AlamofireSessionProtocol
+    private let networkReachabilityManager: NetworkReachabilityManagerAlamofireProtocol?
+    
+}
+
+protocol NetworkReachabilityManagerAlamofireProtocol {
+    var isReachable: Bool { get }
+}
+
+
+extension NetworkReachabilityManager: NetworkReachabilityManagerAlamofireProtocol { }
+
+
+class NetworkReachabilityManagerAlamofireMock: NetworkReachabilityManagerAlamofireProtocol {
+    init(isReachable: Bool) {
+        self.isReachable = isReachable
+    }
+    var isReachable: Bool
+    
     
 }

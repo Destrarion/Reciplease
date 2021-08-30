@@ -2,6 +2,7 @@ import UIKit
 
 class RecipeTableViewCell: UITableViewCell {
 
+    //MARK: - Outlets
     @IBOutlet private weak var shadowView: UIView!
     @IBOutlet private weak var recipeTitleLabel: UILabel!
     @IBOutlet private weak var totalTimeLabel: UILabel!
@@ -9,12 +10,11 @@ class RecipeTableViewCell: UITableViewCell {
     @IBOutlet private weak var ingredientRecipeLabel: UILabel!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
-    /// Singleton Pattern for RecipeService. When Calling RecipeService, thank to Singleton pattern, it will be the same instance that wil be called
-    private var recipeService = RecipeService.shared
+    
+    //MARK:- INTERNAL
+    
+    //MARK: INTERNAL - Methods
 
-    
-    private var lastLoadedRecipe: Recipe?
-    
     /// Primary function for configuring cell of the TableView.
     /// This function assign :
     ///  * Image of the recipe
@@ -71,5 +71,14 @@ class RecipeTableViewCell: UITableViewCell {
         }
     }
     
+    //MARK: - PRIVATE
+    
+    //MARK: Private - Propreties
+    
+    /// Singleton Pattern for RecipeService. When Calling RecipeService, thank to Singleton pattern, it will be the same instance that wil be called
+    private var recipeService = RecipeService.shared
+
+    
+    private var lastLoadedRecipe: Recipe?
     
 }
