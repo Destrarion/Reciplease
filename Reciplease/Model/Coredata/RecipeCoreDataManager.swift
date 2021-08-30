@@ -66,7 +66,6 @@ class RecipeCoreDataManager: RecipeCoreDataManagerProtocol {
     }
     
     /// Delete all the favorite recipe in CoreData.
-    ///
     /// Called for test for CoreData
     func deleteAllRecipes() {
         let recipeEntities = getRecipeEntities()

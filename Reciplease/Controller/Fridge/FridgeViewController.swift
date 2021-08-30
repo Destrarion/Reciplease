@@ -2,40 +2,23 @@ import UIKit
 
 class FridgeViewController: UIViewController {
     
+    //MARK: - INTERNAL
+    
+    //MARK: - INTERNAL - Properties
     private let fridgeService = FridgeService()
     private let recipeService = RecipeService.shared
     private let alertManager = AlertViewManager()
     
+    //MARK: Outlet
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupIngredientTableView()
-        setPlaceholderColor()
-        fridgeService.delegate = self
-        addIngredientTextField.delegate = self
-        
-        searchButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        searchButton.titleLabel?.minimumScaleFactor = 0.5
-        searchButton.layer.cornerRadius = 25
-        clearButton.layer.cornerRadius = 15
-        addButton.layer.cornerRadius = 15
-        addButton.clipsToBounds = true
-        
-        
-    }
+    @IBOutlet private weak var ingredientsTableView: UITableView!
+    @IBOutlet private weak var addIngredientTextField: UITextField!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var searchButton: UIButton!
+    @IBOutlet private weak var clearButton: UIButton!
+    @IBOutlet private weak var addButton: UIButton!
     
-    private func setupIngredientTableView() {
-        ingredientsTableView.delegate = self
-        ingredientsTableView.dataSource = self
-    }
-    
-    @IBOutlet weak var ingredientsTableView: UITableView!
-    @IBOutlet weak var addIngredientTextField: UITextField!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var searchButton: UIButton!
-    @IBOutlet weak var clearButton: UIButton!
-    @IBOutlet weak var addButton: UIButton!
-    
+    //MARK: IBAction
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         addIngredientTextField.resignFirstResponder()
     }
@@ -48,23 +31,19 @@ class FridgeViewController: UIViewController {
     @IBAction func didTapGoToRecipeListButton(_ sender: UIButton) {
         activityIndicator.startAnimating()
         searchButton.isHidden = true
-        if fridgeService.ingredients == [] {
-            alertManager.presentAlert(on: self, errorMessage: FridgeServiceError.noIngredientInFridge.errorDescription)
-            searchingRecipeProcessingEnd()
-            return
-        } else {
-            recipeService.getRecipes(ingredients: fridgeService.ingredients) { [weak self] (result) in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .failure(let error):
-                        self?.alertManager.presentAlert(on: self, errorMessage: error.errorDescription)
-                    case .success:
-                        self?.performSegue(withIdentifier: "GoToRecipeListSegue", sender: nil)
-                    }
-                    self?.searchingRecipeProcessingEnd()
+        
+        recipeService.getRecipes(ingredients: fridgeService.ingredients) { [weak self] (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    self?.alertManager.presentAlert(on: self, errorMessage: error.errorDescription)
+                case .success:
+                    self?.performSegue(withIdentifier: "GoToRecipeListSegue", sender: nil)
                 }
+                self?.searchingRecipeProcessingEnd()
             }
         }
+        
         
     }
     
@@ -73,7 +52,7 @@ class FridgeViewController: UIViewController {
         HapticsManager.shared.notificationVibrate(for: .success)
     }
     
-    
+    //MARK: INTERNAL - Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
@@ -83,8 +62,35 @@ class FridgeViewController: UIViewController {
         
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupIngredientTableView()
+        setPlaceholderColor()
+        fridgeService.delegate = self
+        addIngredientTextField.delegate = self
+        
+        searchButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        searchButton.titleLabel?.minimumScaleFactor = 0.5
+        searchButton.layer.cornerRadius = 25
+        
+        clearButton.layer.cornerRadius = 15
+        
+        addButton.layer.cornerRadius = 15
+        addButton.clipsToBounds = true
+        
+        
+    }
+    
+    //MARK: - PRIVATE
+    
+    //MARK: PRVATE - Methods
+    private func setupIngredientTableView() {
+        ingredientsTableView.delegate = self
+        ingredientsTableView.dataSource = self
+    }
+    
     /// Function for setting the placeholder in the UITextfield for avoiding transparent placeholder when the Iphone dispaly appareance is set on Dark mode
-    func setPlaceholderColor() {
+    private func setPlaceholderColor() {
         let placeholder = addIngredientTextField.placeholder ?? ""
         let placeholderAttributedString = NSMutableAttributedString(string: placeholder)
         let range = (placeholder as NSString).range(of: placeholder)
@@ -95,7 +101,7 @@ class FridgeViewController: UIViewController {
     }
     
     /// Function for stopping the activity indicator from animating and the search button to reappear.
-    func searchingRecipeProcessingEnd(){
+    private func searchingRecipeProcessingEnd() {
         searchButton.isHidden = false
         activityIndicator.stopAnimating()
     }
@@ -114,6 +120,9 @@ class FridgeViewController: UIViewController {
     
 }
 
+//MARK: - EXTENSION
+
+//MARK: EXTENSION - FridgeViewController - UITableViewDataSource
 extension FridgeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -130,7 +139,7 @@ extension FridgeViewController: UITableViewDataSource {
         return fridgeService.ingredients.count
     }
 }
-
+//MARK: EXTENSION - FridgeViewController - UITableViewDelegate
 extension FridgeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -148,6 +157,7 @@ extension FridgeViewController: UITableViewDelegate {
     }
 }
 
+//MARK: EXTENSION - FridgeViewController - FridgeServiceDelegate
 extension FridgeViewController: FridgeServiceDelegate {
     func ingredientsDidChange() {
         DispatchQueue.main.async { [weak self] in
@@ -156,6 +166,7 @@ extension FridgeViewController: FridgeServiceDelegate {
     }
 }
 
+//MARK: EXTENSION - FridgeViewController - UITextFieldDelegate
 extension FridgeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text?.isEmpty ?? true {

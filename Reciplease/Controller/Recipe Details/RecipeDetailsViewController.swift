@@ -27,13 +27,13 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
         ingredientsTableView.dataSource = self
     }
     
-    @IBOutlet weak var ingredientsTableView: UITableView!
-    @IBOutlet weak var titleRecipeLabel: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var imageRecipe: UIImageView!
-    @IBOutlet weak var gradientView: UIView!
-    @IBOutlet weak var favoriteButton: UIButton!
-    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet private weak var ingredientsTableView: UITableView!
+    @IBOutlet private weak var titleRecipeLabel: UILabel!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var imageRecipe: UIImageView!
+    @IBOutlet private weak var gradientView: UIView!
+    @IBOutlet private weak var favoriteButton: UIButton!
+    @IBOutlet private weak var timerLabel: UILabel!
     
     /// Action after pressing Get Direction, calling this fuction to open the url of the recipe on Safari Controller for more details on teh website.
     @IBAction func didTapOnGetDirectionButton() {
@@ -60,7 +60,7 @@ class RecipeDetailsViewController: UIViewController, UITableViewDelegate {
     
     
     /// Function to get the image of the recipe.
-    func getImage(recipe: Recipe) {
+    private func getImage(recipe: Recipe) {
         activityIndicator.startAnimating()
         recipeService.getImageRecipe(
             recipe: recipe

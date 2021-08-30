@@ -20,9 +20,9 @@ class RecipeService {
         self.recipeCoreDataManager = recipeCoreDataManager
     }
     
-    private let networkManager: NetworkManagerProtocol
-    private let recipeUrlProvider: RecipeUrlProviderProtocol
-    private let recipeCoreDataManager: RecipeCoreDataManagerProtocol
+    //MARK: - INTERNAL
+    
+    //MARK: - Internal - Variables
     
     var ingredients: [String] = []
     
@@ -34,39 +34,51 @@ class RecipeService {
         recipeCoreDataManager.getRecipes()
     }
     
+    //MARK: - Internak - Methods
+    
     /// Function to get recipe from  with the ingredients from the fridge given by the API Edamam.
     /// Return hits of recipe and then the function getRecipes translate it directly on array with only the recipe, then assign the recipe into the variable array searchedRecipes.
     /// - Parameters:
     ///   - ingredients: Ingredients stocked in the variable array ingredients in RecipeService
     ///   - callback: Void in the case of success, receive the hit of the recipe, else if error return RecipeServiceError
     func getRecipes(ingredients: [String], callback: @escaping (Result<Void, RecipeServiceError>) -> Void) {
-        if networkManager.isConnectedToInternet() {
-            guard let requestURL = recipeUrlProvider.createRecipeRequestUrl(ingredients: ingredients) else {
-                callback(.failure(.couldNotCreateURL))
+        guard !ingredients.isEmpty else {
+            callback(.failure(.ingredientListIsEmpty))
+            return
+        }
+        
+        guard networkManager.isConnectedToInternet() else {
+            callback(.failure(.internetNotReachable))
+            return
+        }
+        
+        
+        guard let requestURL = recipeUrlProvider.createRecipeRequestUrl(ingredients: ingredients) else {
+            callback(.failure(.couldNotCreateURL))
+            return
+        }
+        
+        
+        networkManager.fetch(url: requestURL) { (result: Result<RecipeResponse, NetworkManagerError>) in
+            switch result {
+            case .failure:
+                callback(.failure(.failedToGetRecipesRequestFailure))
                 return
-            }
-            networkManager.fetch(url: requestURL) { (result: Result<RecipeResponse, NetworkManagerError>) in
-                switch result {
-                case .failure:
-                    callback(.failure(.failedToGetRecipesRequestFailure))
-                    return
-                case .success(let response):
-                    let recipes = response.hits.map { $0.recipe }
-                    
-                    guard !recipes.isEmpty else {
-                        callback(.failure(.failedToGetRecipesEmptyHits))
-                        return
-                    }
-                    
-                    
-                    self.searchedRecipes = recipes
-                    callback(.success(()))
+            case .success(let response):
+                let recipes = response.hits.map { $0.recipe }
+                
+                guard !recipes.isEmpty else {
+                    callback(.failure(.failedToGetRecipesEmptyHits))
                     return
                 }
+                
+                
+                self.searchedRecipes = recipes
+                callback(.success(()))
+                return
             }
-        } else {
-            callback(.failure(.internetNotReachable))
         }
+        
     }
     
     /// Function executed after getting the recipe and the recipe is loading in the TableView of RecipeListController.
@@ -74,7 +86,7 @@ class RecipeService {
     /// - Parameters:
     ///   - recipe: Recipe of the cell in order to get the URL of the API to get the image.
     ///   - callback: Return the image in Data if successfull, else return error of type RecipeServiceError.
-    func getImageRecipe(recipe: Recipe , callback: @escaping (Result<Data, RecipeServiceError>) -> Void){
+    func getImageRecipe(recipe: Recipe, callback: @escaping (Result<Data, RecipeServiceError>) -> Void){
         guard let urlImage = URL(string: recipe.image) else {
             callback(.failure(.couldNotCreateURL))
             return
@@ -114,6 +126,12 @@ class RecipeService {
         }
     }
     
+    //MARK: - PRIVATE
+    
+    //MARK: - Private - Variable
+    private let networkManager: NetworkManagerProtocol
+    private let recipeUrlProvider: RecipeUrlProviderProtocol
+    private let recipeCoreDataManager: RecipeCoreDataManagerProtocol
     
     
     

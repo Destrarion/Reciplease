@@ -1,41 +1,29 @@
-#warning("Need Documentation")
-
-extension Array where Element: Hashable {
-    func removingDuplicates() -> [Element] {
-        var addedDict = [Element: Bool]()
-
-        return filter {
-            addedDict.updateValue(true, forKey: $0) == nil
-        }
-    }
-
-    mutating func removeDuplicates() {
-        self = self.removingDuplicates()
-    }
-}
-
 import UIKit
 
 class RecipeTableViewCell: UITableViewCell {
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    @IBOutlet weak var shadowView: UIView!
-    @IBOutlet weak var recipeTitleLabel: UILabel!
-    @IBOutlet weak var totalTimeLabel: UILabel!
-    @IBOutlet weak var recipeImageView: UIImageView!
-    @IBOutlet weak var ingredientRecipeLabel: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var shadowView: UIView!
+    @IBOutlet private weak var recipeTitleLabel: UILabel!
+    @IBOutlet private weak var totalTimeLabel: UILabel!
+    @IBOutlet private weak var recipeImageView: UIImageView!
+    @IBOutlet private weak var ingredientRecipeLabel: UILabel!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
+    /// Singleton Pattern for RecipeService. When Calling RecipeService, thank to Singleton pattern, it will be the same instance that wil be called
     private var recipeService = RecipeService.shared
 
     
     private var lastLoadedRecipe: Recipe?
     
+    /// Primary function for configuring cell of the TableView.
+    /// This function assign :
+    ///  * Image of the recipe
+    ///  * Label = name of the recipe
+    ///  * TotalTimeLabel = total time estimated for the recipe
+    ///  * Sample of foodcategory = what category of food the recipe might contain.
+    /// - Parameter recipe: Recipe assigned for the cell.
     func configure(recipe: Recipe) {
+        /// reset the image by default
         recipeImageView.image = UIImage()
         lastLoadedRecipe = recipe
         
@@ -43,12 +31,19 @@ class RecipeTableViewCell: UITableViewCell {
         totalTimeLabel.text = recipe.formatCookingTimeToString()
         getImage(recipe: recipe)
         
-        let recipeIngredientsSubtitle =
-            recipe.ingredients
-                .compactMap { $0.foodCategory }
-                .joined(separator: ", ")
+    
         
-        ingredientRecipeLabel.text = recipeIngredientsSubtitle
+        var filteredIngredients: [Ingredient] = []
+        
+        for ingredient in recipe.ingredients {
+            if !filteredIngredients.contains(where: { $0.foodCategory == ingredient.foodCategory }) {
+                filteredIngredients.append(ingredient)
+            }
+        }
+        
+        
+        ingredientRecipeLabel.text = filteredIngredients.compactMap { $0.foodCategory }
+            .joined(separator: ", ")
     }
     
     private func getImage(recipe: Recipe) {

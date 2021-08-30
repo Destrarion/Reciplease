@@ -1,5 +1,6 @@
 import UIKit
 
+/// UIView class for ShadowView for adding gradient. 
 class ShadowView: UIView {
     
     private var gradientLayer: CAGradientLayer?

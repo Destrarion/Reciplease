@@ -143,6 +143,26 @@ class RecipeServiceTests: XCTestCase {
         wait(for: [expectation], timeout: 0.1)
     }
     
+    func test_givenIngredientsListEmpty_whenGetRecipes_thenErroringredientListIsEmpty() {
+        let recipeUrlProviderMock = RecipeUrlProviderMock()
+        let recipeService = RecipeService(recipeUrlProvider: recipeUrlProviderMock)
+        
+        let expectation = expectation(description: "Waiting for queue change")
+        
+        recipeService.getRecipes(ingredients: []) { result in
+            switch result {
+            case .failure(let error):
+                XCTAssertEqual(error, RecipeServiceError.ingredientListIsEmpty)
+                
+            case .success:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        
+        wait(for: [expectation], timeout: 0.1)
+    }
     
     
     func test_givenRecipeWithInvalidRecipeImageUrl_whenGetImageRecipe_thenErrorCouldNotCreateUrl() {

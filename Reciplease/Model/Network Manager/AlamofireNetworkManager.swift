@@ -9,11 +9,12 @@ protocol NetworkManagerProtocol {
 
 class AlamofireNetworkManager: NetworkManagerProtocol {
     
+    // MARK: - INTERNAL
+    // MARK: Internal - Methods
+    
     init(alamofireSession: AlamofireSessionProtocol = AlamofireSession()) {
         self.alamofireSession = alamofireSession
     }
-    
-    private let alamofireSession: AlamofireSessionProtocol
     
     /// Function for getting recipe from the API of edaman with the ingredients in the Fridge.
     /// Called in RecipeService.
@@ -56,7 +57,17 @@ class AlamofireNetworkManager: NetworkManagerProtocol {
     
     /// Function returning boolean if the device is connected to internet
     /// - Returns: True if device connected to internet. False if not connected to internet
-    func isConnectedToInternet()-> Bool {
-            return NetworkReachabilityManager()!.isReachable
+    func isConnectedToInternet() -> Bool {
+        return NetworkReachabilityManager()?.isReachable ?? false
     }
+    
+    
+    
+    
+    // MARK: - PRIVATE
+    
+    // MARK: Private - Properties
+    
+    private let alamofireSession: AlamofireSessionProtocol
+    
 }

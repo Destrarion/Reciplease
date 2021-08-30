@@ -15,6 +15,8 @@ enum RecipeServiceError: LocalizedError {
     case failedToGetRecipeImage
     /// If the device is not connected to internet
     case internetNotReachable
+    /// If the array of ingredient is empty.
+    case ingredientListIsEmpty
     
     /// Description of the error in String of the error occured.
     var errorDescription: String {
@@ -24,6 +26,7 @@ enum RecipeServiceError: LocalizedError {
         case .failedToGetRecipesRequestFailure: return "Failed to get recipes - Request failed"
         case .failedToGetRecipesEmptyHits: return "Failed to recipes - No corresponding hits"
         case .internetNotReachable: return " You are currently not connected to internet"
+        case .ingredientListIsEmpty: return "Ingredients list is empty"
         }
     }
 }

@@ -43,6 +43,11 @@ enum FridgeServiceError: LocalizedError {
 
 class FridgeService {
     
+    
+    // MARK: - INTERNAL
+    
+    
+    // MARK: - Internal - Variable
     weak var delegate: FridgeServiceDelegate?
     
     /// Ingredients is a array corresponding to what the user added in the Fridge.
@@ -54,6 +59,8 @@ class FridgeService {
             delegate?.ingredientsDidChange()
         }
     }
+    
+    // MARK: - Internal - Methods
     
     /// Function add is used when the user is adding ingredients in the variable ingredients
     /// The ingredients string is lowercased and delete extra whitespaces at the start and the end of the string
@@ -99,6 +106,9 @@ class FridgeService {
         ingredients.remove(at: index)
     }
     
+    // MARK: - PRIVATE
+    
+    // MARK: Private - Method
     /// Function checking if the ingredient added by the user is valid as regularExpression with the given pattern to fit when creating URL for fetching recipe.
     ///
     /// More information about the pattern at (  https://cheatography.com/davechild/cheat-sheets/regular-expressions/ )

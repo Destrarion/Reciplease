@@ -1,5 +1,3 @@
-#warning("Need Documentation")
-
 import UIKit
 
 class RecipeListViewController: UITableViewController {
@@ -8,6 +6,8 @@ class RecipeListViewController: UITableViewController {
     
     var shouldDisplayFavorite = true
     
+    /// recipesToDisplay is a private variable that contain the recipe to show on the TableView.
+    /// The variable change depending if the user choose recipe from favorite or searched for new recipes.
     private var recipesToDisplay: [Recipe] {
         shouldDisplayFavorite ?
             recipeService.favoritedRecipes :
@@ -26,6 +26,7 @@ class RecipeListViewController: UITableViewController {
         noRecipeLabel?.isHidden = !recipesToDisplay.isEmpty
     }
     
+    /// Creating a label when selected Favorite and there's no recipe in favory.
     private func messageIfNoFavorite() {
         let title = UILabel()
         title.text = "You have currently no favorite recipe"
@@ -45,14 +46,17 @@ class RecipeListViewController: UITableViewController {
         noRecipeLabel = title
     }
     
-    func backgroundImageSetting(background image: String){
+    /// Function setting the background image with the other background of the application.
+    /// Set in function due RecipeListViewController is directly created as UITableViewController, it need to be set manually in a function due in Storyboard the background can be only changed with a color and not an UIImage when using directly an UITableViewController.
+    /// - Parameter image: String name of the image to set in the background.
+    private func backgroundImageSetting(background image: String){
         let ardoiseImage = UIImage(named: image)
         let ardoiseImageView = UIImageView(image: ardoiseImage)
         ardoiseImageView.contentMode = .scaleAspectFill
         tableView.backgroundView = ardoiseImageView
     }
     
-    var alertManager = AlertViewManager()
+    /// Singleton Pattern for RecipeService. When Calling RecipeService, thank to Singleton pattern, it will be the same instance that wil be called
     private var recipeService = RecipeService.shared
     
     
