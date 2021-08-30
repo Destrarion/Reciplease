@@ -37,13 +37,13 @@ class RecipeCoreDataManager: RecipeCoreDataManagerProtocol {
         
         let recipes = recipeEntities.map { recipeEntity in
             Recipe(
-                label: recipeEntity.title ?? "",
-                image: recipeEntity.imageURL ?? "",
-                url: recipeEntity.instructionUrl ?? "",
-                ingredientLines: recipeEntity.ingredientLines ?? [""],
-                ingredients: recipeEntity.foodCategories?.map { foodCategory in
+                label: recipeEntity.title,
+                image: recipeEntity.imageURL,
+                url: recipeEntity.instructionUrl,
+                ingredientLines: recipeEntity.ingredientLines,
+                ingredients: recipeEntity.foodCategories.map { foodCategory in
                     Ingredient(foodCategory: foodCategory)
-                } ?? [],
+                },
                 totalTime: recipeEntity.totalTime
             )
         }
@@ -51,7 +51,7 @@ class RecipeCoreDataManager: RecipeCoreDataManagerProtocol {
         return recipes
         
     }
-    
+    #warning("save context a revoir")
     /// Function to delete favorite recipe in Core Data.
     /// - Parameter title: Title of the recipe to delete
     func deleteRecipe(with title: String) {
@@ -86,7 +86,9 @@ class RecipeCoreDataManager: RecipeCoreDataManagerProtocol {
     private func getRecipeEntities() -> [RecipeEntity] {
         let request = NSFetchRequest<RecipeEntity>(entityName: "RecipeEntity")
         
-        return (try? coreDataContextProvider.viewContext.fetch(request)) ?? []
+        guard let recipeEntities = try? coreDataContextProvider.viewContext.fetch(request) else { return [] }
+        
+        return recipeEntities
     }
     
     

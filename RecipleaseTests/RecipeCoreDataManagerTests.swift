@@ -52,7 +52,7 @@ class RecipeCoreDataManagerTests: XCTestCase {
             image: "",
             url: "",
             ingredientLines: [],
-            ingredients: [],
+            ingredients: [.init(foodCategory: "italian")],
             totalTime: 4
         )
     }

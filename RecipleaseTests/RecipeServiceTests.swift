@@ -58,7 +58,7 @@ class RecipeServiceTests: XCTestCase {
         let recipeService = RecipeService(recipeCoreDataManager: recipeCoreDataManagerMock)
         
         
-        let recipe = Recipe(label: "Pizza", image: "", url: "", ingredientLines: [], ingredients: [], totalTime: 10)
+        let recipe = Recipe(label: "Pizza", image: "", url: "", ingredientLines: [], ingredients: [.init(foodCategory: "Italian")], totalTime: 10)
         
         XCTAssertEqual(recipeService.favoritedRecipes.count, 0)
         
