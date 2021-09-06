@@ -9,7 +9,11 @@ protocol RecipeCoreDataManagerProtocol {
 
 class RecipeCoreDataManager: RecipeCoreDataManagerProtocol {
     
-    private let coreDataContextProvider = CoreDataContextProvider.shared
+    init(coreDataContextProvider: CoreDataContextProviderProtocol =  CoreDataContextProvider.shared) {
+        self.coreDataContextProvider = coreDataContextProvider
+    }
+    
+    private let coreDataContextProvider: CoreDataContextProviderProtocol
     
     
     /// Add the recipe into CoreData
@@ -24,7 +28,7 @@ class RecipeCoreDataManager: RecipeCoreDataManagerProtocol {
         recipeEntity.ingredientLines = recipe.ingredientLines
         recipeEntity.foodCategories = recipe.ingredients.compactMap(\.foodCategory)
         recipeEntity.instructionUrl = recipe.url
-        coreDataContextProvider.saveContext()
+        try? coreDataContextProvider.save()
     }
     
     /// Function called to get all the favorite recipe.
@@ -51,17 +55,17 @@ class RecipeCoreDataManager: RecipeCoreDataManagerProtocol {
         return recipes
         
     }
-    #warning("save context a revoir")
+    
     /// Function to delete favorite recipe in Core Data.
     /// - Parameter title: Title of the recipe to delete
     func deleteRecipe(with title: String) {
         let recipeEntities = getRecipeEntities()
         for recipeEntity in recipeEntities where recipeEntity.title == title {
-            coreDataContextProvider.viewContext.delete(recipeEntity)
+            coreDataContextProvider.delete(recipeEntity)
             
         }
         
-        guard let _ = try? coreDataContextProvider.viewContext.save() else { return }
+        try? coreDataContextProvider.save()
         
     }
     
@@ -71,10 +75,10 @@ class RecipeCoreDataManager: RecipeCoreDataManagerProtocol {
         let recipeEntities = getRecipeEntities()
         
         for recipeEntity in recipeEntities {
-            coreDataContextProvider.viewContext.delete(recipeEntity)
+            coreDataContextProvider.delete(recipeEntity)
         }
         
-        guard let _ = try? coreDataContextProvider.viewContext.save() else { return }
+        try? coreDataContextProvider.save()
     }
     
     
@@ -86,7 +90,7 @@ class RecipeCoreDataManager: RecipeCoreDataManagerProtocol {
     private func getRecipeEntities() -> [RecipeEntity] {
         let request = NSFetchRequest<RecipeEntity>(entityName: "RecipeEntity")
         
-        guard let recipeEntities = try? coreDataContextProvider.viewContext.fetch(request) else { return [] }
+        guard let recipeEntities = try? coreDataContextProvider.fetch(request) else { return [] }
         
         return recipeEntities
     }

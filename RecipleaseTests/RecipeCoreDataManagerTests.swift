@@ -46,6 +46,14 @@ class RecipeCoreDataManagerTests: XCTestCase {
        
     }
     
+    func test_givenFailingFetchContext_whenGetRecipes_thenGetEmptyArray() throws {
+        let coreDataContextProviderMock = CoreDataContextProviderMock()
+        let recipeCoreDataManager = RecipeCoreDataManager(coreDataContextProvider: coreDataContextProviderMock)
+        
+        XCTAssertTrue(recipeCoreDataManager.getRecipes().isEmpty)
+       
+    }
+    
     private func createSimpleRecipe(with title: String) -> Recipe {
         Recipe(
             label: title,
