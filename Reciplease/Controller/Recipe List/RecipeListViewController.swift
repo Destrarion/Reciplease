@@ -61,7 +61,7 @@ class RecipeListViewController: UITableViewController {
     //MARK: Private - Properties
     
     /// recipesToDisplay is a private variable that contain the recipe to show on the TableView.
-    /// The variable change depending if the user choose recipe from favorite or searched for new recipes.
+    /// The variable change with a operator Terner depending if the user choose recipe from favorite or searched for new recipes.
     private var recipesToDisplay: [Recipe] {
         shouldDisplayFavorite ?
             recipeService.favoritedRecipes :
