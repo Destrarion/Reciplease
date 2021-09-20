@@ -45,7 +45,6 @@
 		5FFD771625F2171D00248FF7 /* RecipeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFD771525F2171D00248FF7 /* RecipeListViewController.swift */; };
 		5FFD771B25F2177800248FF7 /* RecipeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFD771A25F2177800248FF7 /* RecipeDetailsViewController.swift */; };
 		5FFDC8B826436109001C84B1 /* DetailsIngredientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFDC8B726436109001C84B1 /* DetailsIngredientTableViewCell.swift */; };
-		6C48F2FD4236BD2B4699A227 /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5050492669FD65008DD2F2 /* Pods_Reciplease.framework */; };
 		B3DDB37B55926BAF6A982F9D /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 299F90440E316C94BE2CD3DE /* Pods_Reciplease.framework */; };
 		E947133B19FB05E32B54B3B5 /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66BC21D42E530675C4BAF367 /* Pods_RecipleaseTests.framework */; };
 /* End PBXBuildFile section */
@@ -96,7 +95,7 @@
 		5FC744E326733ABD0068727D /* RecipeUrlProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeUrlProviderMock.swift; sourceTree = "<group>"; };
 		5FC744E5267341C50068727D /* RecipeCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCoreDataManager.swift; sourceTree = "<group>"; };
 		5FD12EAE2679DF32005079B7 /* RecipeCoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCoreDataManagerTests.swift; sourceTree = "<group>"; };
-		5FD12EB02679F001005079B7 /* CoreDataContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataContextProvider.swift; path = ../../../../../../Downloads/CoreDataContextProvider.swift; sourceTree = "<group>"; };
+		5FD12EB02679F001005079B7 /* CoreDataContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContextProvider.swift; sourceTree = "<group>"; };
 		5FFD76CB25F2139B00248FF7 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FFD76CE25F2139B00248FF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FFD76D025F2139B00248FF7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,7 +126,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3DDB37B55926BAF6A982F9D /* Pods_Reciplease.framework in Frameworks */,
-				6C48F2FD4236BD2B4699A227 /* Pods_Reciplease.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,7 +439,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1210;
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					5FFD76CA25F2139B00248FF7 = {
 						CreatedOnToolsVersion = 12.1;
@@ -727,7 +725,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -782,7 +780,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
